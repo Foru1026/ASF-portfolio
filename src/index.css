@@ -5,21 +5,21 @@
 	--textDim: hsl(0, 0%, 60%);
 	--background: hsl(0, 0%, 0%);
 	--background-reverse: hsl(0, 0%, 100%);
-	--scroll-bar: 31, 195, 255;
-	--primary: 31, 195, 255;
-	--primaryBg: hsla(196, 100%, 56%, 8%);
-	--primaryHi: hsla(196, 100%, 56%, 22%);
-	--primaryFg: hsl(196, 100%, 85%);
+	--scroll-bar: 140, 168, 195;
+	--primary: 140, 168, 195;
+	--primaryBg: hsla(210, 22%, 55%, 8%);
+	--primaryHi: hsla(210, 22%, 55%, 18%);
+	--primaryFg: hsl(210, 28%, 82%);
 	--secondary: hsl(156, 51%, 14%);
 	--secondaryFg: hsl(156, 51%, 75%);
 	--secondaryBg: hsla(156, 51%, 14%, 5%);
 	--secondaryHi: hsla(156, 51%, 30%, 50%);
-	--accent: hsl(155, 100%, 94%);
-	--accentBg: hsla(196, 100%, 56%, 6%);
-	--accentHi: hsla(196, 100%, 56%, 18%);
-	--gradient-start: rgb(31, 195, 255);
-	--gradient-end: rgb(120, 100, 255);
-	--accent-rgb: 120, 200, 255;
+	--accent: hsl(210, 30%, 92%);
+	--accentBg: hsla(210, 22%, 55%, 6%);
+	--accentHi: hsla(210, 22%, 55%, 14%);
+	--gradient-start: rgb(150, 178, 205);
+	--gradient-end: rgb(120, 140, 175);
+	--accent-rgb: 150, 178, 205;
 }
 
 html {

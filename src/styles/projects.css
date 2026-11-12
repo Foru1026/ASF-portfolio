@@ -283,7 +283,7 @@
 
 .projects-scroll-track {
 	position: relative;
-	height: 2px;
+	height: 1.5px;
 	border-radius: 999px;
 	touch-action: none;
 	user-select: none;
@@ -291,9 +291,9 @@
 	background: linear-gradient(
 		90deg,
 		transparent 0%,
-		rgba(140, 170, 200, 0.18) 8%,
-		rgba(140, 170, 200, 0.28) 50%,
-		rgba(140, 170, 200, 0.18) 92%,
+		rgba(140, 160, 180, 0.16) 8%,
+		rgba(140, 160, 180, 0.24) 50%,
+		rgba(140, 160, 180, 0.16) 92%,
 		transparent 100%
 	);
 	border: none;
@@ -310,7 +310,7 @@
 	position: absolute;
 	top: 50%;
 	left: 0;
-	height: 2px;
+	height: 1.5px;
 	min-width: 9rem;
 	border-radius: 999px;
 	pointer-events: auto;
@@ -318,16 +318,11 @@
 	will-change: transform, width, opacity;
 	background: linear-gradient(
 		90deg,
-		rgba(255, 255, 255, 0.95) 0%,
-		rgba(180, 235, 255, 0.9) 10%,
-		rgba(70, 200, 255, 0.55) 38%,
-		rgba(40, 160, 255, 0.18) 70%,
+		rgba(230, 238, 246, 0.9) 0%,
+		rgba(160, 190, 215, 0.7) 18%,
+		rgba(120, 155, 185, 0.35) 55%,
 		transparent 100%
 	);
-	box-shadow:
-		0 0 8px rgba(200, 240, 255, 0.7),
-		0 0 18px rgba(70, 200, 255, 0.45),
-		0 0 34px rgba(40, 170, 255, 0.22);
 	transition: opacity 0.35s ease, filter 0.2s ease;
 }
 
@@ -336,42 +331,23 @@
 	position: absolute;
 	left: 0;
 	top: 50%;
-	width: 10px;
-	height: 10px;
+	width: 8px;
+	height: 8px;
 	transform: translate(-20%, -50%);
 	border-radius: 50%;
+	border: 1.5px solid rgba(160, 190, 215, 0.6);
 	background: radial-gradient(
-		circle,
-		rgba(255, 255, 255, 1) 0%,
-		rgba(190, 240, 255, 0.95) 35%,
-		rgba(70, 200, 255, 0.35) 70%,
-		transparent 100%
+		circle at 38% 32%,
+		rgba(248, 252, 255, 0.95) 0%,
+		rgba(170, 198, 220, 0.85) 55%,
+		rgba(110, 145, 175, 0.7) 100%
 	);
-	box-shadow:
-		0 0 10px rgba(255, 255, 255, 0.9),
-		0 0 22px rgba(90, 210, 255, 0.65);
+	box-shadow: 0 0 0 2px rgba(4, 12, 22, 0.85);
 	pointer-events: none;
 }
 
 .projects-scroll-thumb::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 50%;
-	height: 16px;
-	transform: translateY(-50%);
-	border-radius: inherit;
-	background: linear-gradient(
-		90deg,
-		rgba(180, 235, 255, 0.35) 0%,
-		rgba(70, 200, 255, 0.18) 35%,
-		rgba(40, 160, 255, 0.06) 70%,
-		transparent 100%
-	);
-	filter: blur(7px);
-	pointer-events: none;
-	z-index: -1;
+	display: none;
 }
 
 .projects-scroll-thumb:active {

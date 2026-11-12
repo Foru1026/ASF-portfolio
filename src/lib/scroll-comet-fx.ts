@@ -1,9 +1,6 @@
-const tailRgb = (warmth: number, alpha: number) => {
-	const r = Math.round(195 + warmth * 60);
-	const g = Math.round(218 + warmth * 25);
-	const b = 255;
-	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
+const railRgb = (alpha: number) => `rgba(148, 168, 188, ${alpha})`;
+const accentRgb = (alpha: number) => `rgba(120, 168, 210, ${alpha})`;
+const coreRgb = (alpha: number) => `rgba(210, 224, 236, ${alpha})`;
 
 const endFade = (t: number, fade = 0.14) => {
 	if (t < fade) return t / fade;
@@ -20,7 +17,7 @@ const drawFadedStroke = (
 	colorAt: (t: number) => string,
 	fadeStart = 0.14,
 	fadeEnd = 0.14,
-	steps = 48,
+	steps = 40,
 	alphaScale = 1,
 ) => {
 	const len = yEnd - yStart;
@@ -39,7 +36,7 @@ const drawFadedStroke = (
 
 		ctx.strokeStyle = colorAt(mid);
 		ctx.globalAlpha = envelope;
-		ctx.lineWidth = width * (0.55 + envelope * 0.45);
+		ctx.lineWidth = width * (0.7 + envelope * 0.3);
 		ctx.beginPath();
 		ctx.moveTo(x, sy0);
 		ctx.lineTo(x, sy1);
@@ -49,8 +46,8 @@ const drawFadedStroke = (
 	ctx.globalAlpha = 1;
 };
 
-/** Soft elliptical stamps along the tail — organic vapor fade at the tip. */
-const drawVividTail = (
+/** Quiet trailing mark — thin, short, no vapor bloom. */
+const drawQuietTail = (
 	ctx: CanvasRenderingContext2D,
 	headX: number,
 	headY: number,
@@ -58,65 +55,37 @@ const drawVividTail = (
 	tailY: number,
 	tailLen: number,
 	brightness: number,
-	pulse: number,
 ) => {
-	const steps = 42;
-	const maxWidth = 3.2 * brightness * pulse;
+	const steps = 22;
 
-	for (let i = 0; i <= steps; i++) {
-		const t = i / steps;
-		const fade = Math.pow(1 - t, 4.2);
-		if (fade < 0.004) continue;
-
-		const x = tailX + (headX - tailX) * t;
-		const y = tailY + (headY - tailY) * t;
-		const radius = maxWidth * fade * fade + 0.08;
-		const warmth = 0.25 + t * 0.75;
-		const alpha = fade * brightness * pulse * 0.75;
-
-		const stamp = ctx.createRadialGradient(x, y, 0, x, y, radius * 2.8);
-		stamp.addColorStop(0, tailRgb(warmth, alpha * 0.95));
-		stamp.addColorStop(0.35, tailRgb(warmth * 0.7, alpha * 0.45));
-		stamp.addColorStop(0.7, `rgba(31, 120, 220, ${alpha * 0.12})`);
-		stamp.addColorStop(1, 'rgba(20, 60, 120, 0)');
-
-		ctx.fillStyle = stamp;
-		ctx.beginPath();
-		ctx.ellipse(x, y, radius * 1.15, radius * 2.4, 0, 0, Math.PI * 2);
-		ctx.fill();
-	}
-
-	const dirX = (headX - tailX) / tailLen;
-	const dirY = (headY - tailY) / tailLen;
-
-	// Thin bright core thread
-	for (let i = 0; i < 28; i++) {
-		const t0 = i / 28;
-		const t1 = (i + 1) / 28;
-		const fade1 = Math.pow(t1, 3.5);
+	for (let i = 0; i < steps; i++) {
+		const t0 = i / steps;
+		const t1 = (i + 1) / steps;
+		const fade = Math.pow(t1, 2.4);
 		const x0 = tailX + (headX - tailX) * t0;
 		const y0 = tailY + (headY - tailY) * t0;
 		const x1 = tailX + (headX - tailX) * t1;
 		const y1 = tailY + (headY - tailY) * t1;
 
-		ctx.strokeStyle = tailRgb(0.5 + t1 * 0.5, fade1 * brightness * pulse * 0.9);
-		ctx.lineWidth = 0.08 + fade1 * fade1 * 1.6;
+		ctx.strokeStyle = accentRgb(fade * brightness * 0.45);
+		ctx.lineWidth = 0.5 + fade * 1.1;
 		ctx.beginPath();
 		ctx.moveTo(x0, y0);
 		ctx.lineTo(x1, y1);
 		ctx.stroke();
 	}
 
-	// Hot streak at head
-	const hotLen = tailLen * 0.18;
+	const dirX = (headX - tailX) / Math.max(tailLen, 1);
+	const dirY = (headY - tailY) / Math.max(tailLen, 1);
+	const hotLen = tailLen * 0.22;
 	const hotX = headX - dirX * hotLen;
 	const hotY = headY - dirY * hotLen;
 	const hotGrad = ctx.createLinearGradient(hotX, hotY, headX, headY);
-	hotGrad.addColorStop(0, `rgba(150, 210, 255, ${0.4 * brightness})`);
-	hotGrad.addColorStop(0.55, `rgba(235, 248, 255, ${0.92 * brightness})`);
-	hotGrad.addColorStop(1, 'rgba(255, 255, 255, 1)');
+	hotGrad.addColorStop(0, accentRgb(0.12 * brightness));
+	hotGrad.addColorStop(0.65, coreRgb(0.55 * brightness));
+	hotGrad.addColorStop(1, coreRgb(0.85 * brightness));
 	ctx.strokeStyle = hotGrad;
-	ctx.lineWidth = 2;
+	ctx.lineWidth = 1.35;
 	ctx.beginPath();
 	ctx.moveTo(hotX, hotY);
 	ctx.lineTo(headX, headY);
@@ -131,30 +100,27 @@ export const drawScrollComet = (
 	canvasHeight: number,
 	progress: number,
 	brightness: number,
-	time: number,
+	_time: number,
 	scrollDir: number,
 	velocity: number,
 ) => {
-	const pulse = 0.9 + Math.sin(time * 0.004) * 0.1;
-	const speed = Math.min(1.3, Math.abs(scrollDir));
+	const speed = Math.min(1.1, Math.abs(scrollDir));
 	const moving = velocity > 0.05;
 
-	// Fully hide trail effects when parked at scroll start/end.
 	const endpointFade = Math.min(progress / 0.04, (1 - progress) / 0.04, 1);
 	const endpointEase = endpointFade * endpointFade * endpointFade;
 	const atEndpoint = progress <= 0.012 || progress >= 0.988;
 
 	const tailLen =
 		moving && !atEndpoint && endpointEase > 0.02
-			? Math.min(190, canvasHeight * 0.2) *
-				(0.85 + speed * 0.65) *
+			? Math.min(110, canvasHeight * 0.12) *
+				(0.7 + speed * 0.45) *
 				endpointEase *
-				Math.min(1, velocity * 1.4)
+				Math.min(1, velocity * 1.2)
 			: 0;
 
-	// Tail trails opposite to scroll: down scroll → tail up, up scroll → tail down
 	const motion = scrollDir === 0 ? 1 : scrollDir;
-	const tilt = 0.3;
+	const tilt = 0.18;
 	const dirY = motion > 0 ? -1 : 1;
 	const dirX = -tilt;
 	const mag = Math.hypot(dirX, dirY);
@@ -167,56 +133,45 @@ export const drawScrollComet = (
 	const fade = 0.16;
 
 	ctx.save();
-	ctx.globalCompositeOperation = 'lighter';
+	ctx.globalCompositeOperation = 'source-over';
 	ctx.lineCap = 'round';
 
+	// Base track — muted steel, no neon
 	drawFadedStroke(
 		ctx,
 		railX,
 		edgeTop,
 		edgeBottom,
-		1.2,
+		1,
 		(t) => {
-			const core = 0.04 + Math.sin(t * Math.PI) * 0.07;
-			return `rgba(100, 170, 255, ${core})`;
+			const core = 0.08 + Math.sin(t * Math.PI) * 0.06;
+			return railRgb(core);
 		},
 		fade,
 		fade,
 	);
 
-	if (progress > 0.005 && !atEndpoint && moving && endpointEase > 0.02) {
+	// Progress fill — restrained cool grey-blue
+	if (progress > 0.005 && !atEndpoint) {
 		drawFadedStroke(
 			ctx,
 			railX,
 			edgeTop,
 			headY,
-			2.4,
+			1.6,
 			(t) => {
-				const intensity = 0.2 + t * 0.55 + Math.pow(t, 1.4) * 0.25;
-				return `rgba(${Math.round(80 + t * 100)}, ${Math.round(180 + t * 40)}, 255, ${intensity})`;
+				const intensity = 0.18 + t * 0.35;
+				return accentRgb(intensity);
 			},
 			fade,
 			0.04,
-			56,
-			endpointEase,
-		);
-
-		drawFadedStroke(
-			ctx,
-			railX - 1,
-			edgeTop,
-			headY,
-			12,
-			(t) => `rgba(80, 160, 255, ${0.04 + t * 0.06})`,
-			fade * 1.2,
-			0.06,
-			40,
-			endpointEase * 0.85,
+			48,
+			Math.max(0.35, endpointEase),
 		);
 	}
 
 	if (tailLen > 2) {
-		drawVividTail(
+		drawQuietTail(
 			ctx,
 			headX,
 			headY,
@@ -224,25 +179,29 @@ export const drawScrollComet = (
 			tailY,
 			tailLen,
 			brightness * endpointEase,
-			pulse,
 		);
 	}
 
-	const bloomR = 11 * pulse;
-	const bloom = ctx.createRadialGradient(headX, headY, 0, headX, headY, bloomR);
-	bloom.addColorStop(0, 'rgba(255, 255, 255, 1)');
-	bloom.addColorStop(0.2, `rgba(225, 245, 255, ${0.9 * brightness})`);
-	bloom.addColorStop(0.45, `rgba(31, 195, 255, ${0.4 * brightness})`);
-	bloom.addColorStop(0.72, `rgba(130, 100, 255, ${0.14 * brightness})`);
-	bloom.addColorStop(1, 'rgba(20, 60, 140, 0)');
-	ctx.fillStyle = bloom;
+	// Indicator node — small ring + soft core (no neon bloom)
+	const ringR = 5.2;
 	ctx.beginPath();
-	ctx.arc(headX, headY, bloomR, 0, Math.PI * 2);
+	ctx.arc(headX, headY, ringR, 0, Math.PI * 2);
+	ctx.strokeStyle = accentRgb(0.55 * brightness);
+	ctx.lineWidth = 1.1;
+	ctx.stroke();
+
+	const core = ctx.createRadialGradient(headX, headY, 0, headX, headY, 3.6);
+	core.addColorStop(0, `rgba(236, 244, 250, ${0.95 * brightness})`);
+	core.addColorStop(0.55, `rgba(170, 198, 220, ${0.75 * brightness})`);
+	core.addColorStop(1, `rgba(90, 130, 170, ${0.2 * brightness})`);
+	ctx.fillStyle = core;
+	ctx.beginPath();
+	ctx.arc(headX, headY, 3.2, 0, Math.PI * 2);
 	ctx.fill();
 
-	ctx.fillStyle = '#ffffff';
+	ctx.fillStyle = `rgba(250, 252, 255, ${0.9 * brightness})`;
 	ctx.beginPath();
-	ctx.arc(headX, headY, 1.6 * pulse, 0, Math.PI * 2);
+	ctx.arc(headX, headY, 1.15, 0, Math.PI * 2);
 	ctx.fill();
 
 	ctx.restore();
@@ -262,37 +221,26 @@ export const createSpark = (
 	headY: number,
 	scrollDir: number,
 ): Spark => ({
-	x: headX + (Math.random() - 0.5) * 4,
-	y: headY + (Math.random() - 0.5) * 4,
+	x: headX + (Math.random() - 0.5) * 2.5,
+	y: headY + (Math.random() - 0.5) * 2.5,
 	life: 1,
-	vx: -(Math.random() * 1.8 + 0.5),
+	vx: -(Math.random() * 0.9 + 0.25),
 	vy:
 		scrollDir < 0
-			? Math.random() * 2.8 + 1
-			: -(Math.random() * 2.8 + 1),
-	size: Math.random() * 1.3 + 0.5,
+			? Math.random() * 1.4 + 0.4
+			: -(Math.random() * 1.4 + 0.4),
+	size: Math.random() * 0.7 + 0.25,
 });
 
 export const drawSparks = (ctx: CanvasRenderingContext2D, sparks: Spark[]) => {
 	ctx.save();
-	ctx.globalCompositeOperation = 'lighter';
+	ctx.globalCompositeOperation = 'source-over';
 
 	for (const spark of sparks) {
-		const alpha = spark.life * spark.life * 0.95;
-		const glow = ctx.createRadialGradient(
-			spark.x,
-			spark.y,
-			0,
-			spark.x,
-			spark.y,
-			spark.size * 3,
-		);
-		glow.addColorStop(0, `rgba(255, 255, 255, ${alpha})`);
-		glow.addColorStop(0.3, `rgba(180, 230, 255, ${alpha * 0.55})`);
-		glow.addColorStop(1, 'rgba(31, 195, 255, 0)');
-		ctx.fillStyle = glow;
+		const alpha = spark.life * spark.life * 0.55;
+		ctx.fillStyle = `rgba(180, 205, 225, ${alpha})`;
 		ctx.beginPath();
-		ctx.arc(spark.x, spark.y, spark.size * 3, 0, Math.PI * 2);
+		ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
 		ctx.fill();
 	}
 
@@ -306,8 +254,8 @@ export const tickSparks = (
 	intensity: number,
 	scrollDir: number,
 ) => {
-	if (intensity > 0.05) {
-		const count = Math.min(6, Math.ceil(intensity * 7));
+	if (intensity > 0.12) {
+		const count = Math.min(2, Math.ceil(intensity * 3));
 		for (let i = 0; i < count; i++) {
 			sparks.push(createSpark(headX, headY, scrollDir));
 		}
@@ -316,12 +264,12 @@ export const tickSparks = (
 	for (let i = sparks.length - 1; i >= 0; i--) {
 		sparks[i].x += sparks[i].vx;
 		sparks[i].y += sparks[i].vy;
-		sparks[i].vy += scrollDir < 0 ? -0.03 : 0.03;
-		sparks[i].life -= 0.034;
+		sparks[i].vy += scrollDir < 0 ? -0.02 : 0.02;
+		sparks[i].life -= 0.045;
 		if (sparks[i].life <= 0) sparks.splice(i, 1);
 	}
 
-	if (sparks.length > 60) sparks.splice(0, sparks.length - 60);
+	if (sparks.length > 24) sparks.splice(0, sparks.length - 24);
 };
 
 export const scrollProgressFromClientY = (
