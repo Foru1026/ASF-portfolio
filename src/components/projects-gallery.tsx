@@ -98,6 +98,7 @@ export const ProjectsGallery = () => {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const railRef = useRef<HTMLDivElement>(null);
 	const thumbRef = useRef<HTMLDivElement>(null);
+	const gridTopRef = useRef<HTMLDivElement>(null);
 	const loopWidthRef = useRef(0);
 	const pausedRef = useRef(false);
 	const scrollbarDraggingRef = useRef(false);
@@ -174,6 +175,34 @@ export const ProjectsGallery = () => {
 		},
 		[getMetrics, paintThumb],
 	);
+
+	const scrollGridToStart = useCallback(() => {
+		const anchor =
+			gridTopRef.current ?? document.getElementById('projects');
+		if (!anchor) return;
+		const top =
+			anchor.getBoundingClientRect().top + window.scrollY - 88;
+		window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+	}, []);
+
+	const toggleShowAll = () => {
+		setShowAll((open) => {
+			const next = !open;
+			if (next) {
+				window.requestAnimationFrame(() => {
+					window.requestAnimationFrame(scrollGridToStart);
+				});
+			}
+			return next;
+		});
+		pausedRef.current = false;
+		setThumbHidden(false);
+	};
+
+	useEffect(() => {
+		if (!showAll) return;
+		scrollGridToStart();
+	}, [showAll, scrollGridToStart]);
 
 	useEffect(() => {
 		if (showAll) return;
@@ -296,26 +325,45 @@ export const ProjectsGallery = () => {
 		rail.addEventListener('pointercancel', onUp);
 	};
 
+	const showAllButton = (
+		<button
+			type='button'
+			className='comet-btn comet-btn-contact projects-show-all'
+			onClick={toggleShowAll}
+		>
+			{showAll ? 'Show less' : 'Show all'}
+		</button>
+	);
+
 	return (
 		<div className='projects-gallery-wrap'>
 			{showAll ? (
-				<div
-					className='projects-grid'
-					role='list'
-					aria-label='All selected work'
-				>
-					{projects.map((project, idx) => (
-						<div
-							key={project.title}
-							className='projects-grid-item'
-						>
-							<ProjectCard
-								project={project}
-								index={idx}
-							/>
-						</div>
-					))}
-				</div>
+				<>
+					<div
+						ref={gridTopRef}
+						className='projects-actions projects-actions-top'
+					>
+						{showAllButton}
+					</div>
+					<div
+						className='projects-grid'
+						role='list'
+						aria-label='All selected work'
+					>
+						{projects.map((project, idx) => (
+							<div
+								key={project.title}
+								className='projects-grid-item'
+							>
+								<ProjectCard
+									project={project}
+									index={idx}
+								/>
+							</div>
+						))}
+					</div>
+					<div className='projects-actions'>{showAllButton}</div>
+				</>
 			) : (
 				<>
 					<div className='projects-gallery-viewport'>
@@ -360,22 +408,10 @@ export const ProjectsGallery = () => {
 							/>
 						</div>
 					</div>
+
+					<div className='projects-actions'>{showAllButton}</div>
 				</>
 			)}
-
-			<div className='projects-actions'>
-				<button
-					type='button'
-					className='comet-btn comet-btn-contact projects-show-all'
-					onClick={() => {
-						setShowAll((open) => !open);
-						pausedRef.current = false;
-						setThumbHidden(false);
-					}}
-				>
-					{showAll ? 'Show less' : 'Show all'}
-				</button>
-			</div>
 		</div>
 	);
 };

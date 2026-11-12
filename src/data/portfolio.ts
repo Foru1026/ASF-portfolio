@@ -129,6 +129,7 @@ export const highlights: Highlight[] = [
 	{ value: '9+', label: 'Years Experience' },
 	{ value: 'AI Agents', label: 'Focus' },
 	{ value: 'Full Stack', label: 'React & Node' },
+	{ value: '16+', label: 'Live Products' },
 	{ value: 'Production', label: 'Systems' },
 ];
 
@@ -284,6 +285,39 @@ export const projects: ProjectItem[] = [
 		stack: ['No-Code', 'AI Agents', 'Integrations'],
 		image: projectPreview('https://dugong.live'),
 		url: 'https://dugong.live',
+	},
+	{
+		title: 'Browserbase',
+		description:
+			'Headless browser infrastructure for AI agents — run, control, and scale real browser sessions via API.',
+		stack: ['Browsers', 'Agents', 'Infra', 'API'],
+		image: projectPreview('https://browserbase.com'),
+		url: 'https://browserbase.com',
+		featured: true,
+	},
+	{
+		title: 'Composio',
+		description:
+			'Tool-calling layer for AI agents — connect models to 250+ apps with managed auth and actions.',
+		stack: ['Tool Calling', 'Integrations', 'Agents'],
+		image: projectPreview('https://www.composio.dev'),
+		url: 'https://www.composio.dev',
+	},
+	{
+		title: 'Browser Use',
+		description:
+			'Open browser-agent framework for making websites actionable — automate real UI flows with LLMs.',
+		stack: ['Browser Agents', 'LLM', 'Automation'],
+		image: projectPreview('https://www.browseruse.com'),
+		url: 'https://www.browseruse.com',
+	},
+	{
+		title: 'LlamaIndex',
+		description:
+			'Document agents and workflow platform for OCR, retrieval, and multi-step AI document processing.',
+		stack: ['RAG', 'Agents', 'Documents', 'Workflows'],
+		image: projectPreview('https://www.llamaindex.ai'),
+		url: 'https://www.llamaindex.ai',
 	},
 ];
 

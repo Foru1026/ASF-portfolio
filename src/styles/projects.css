@@ -5,6 +5,7 @@
 	align-items: center;
 	gap: 1.35rem;
 	overflow-x: clip;
+	overflow-y: visible;
 }
 
 .projects-header {
@@ -259,6 +260,8 @@
 	gap: 1.35rem;
 	width: 100%;
 	padding: 0.25rem 0.5rem 0.5rem;
+	overflow: visible;
+	max-height: none;
 }
 
 .projects-grid-item {
@@ -269,6 +272,11 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 1.15rem;
+}
+
+.projects-actions-top {
+	margin-top: 0;
+	margin-bottom: 0.85rem;
 }
 
 .projects-show-all {

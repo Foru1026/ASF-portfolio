@@ -204,9 +204,9 @@
 .hero-stats {
 	position: relative;
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(5, minmax(0, 1fr));
 	gap: 0;
-	width: min(100%, 48rem);
+	width: min(100%, 56rem);
 	margin: 0 auto;
 	padding: 0.2rem;
 	border-radius: 16px;
@@ -400,7 +400,7 @@ html.weather-sunny .hero-stat:nth-child(3n) .hero-stat-value {
 
 	.hero-stats {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		width: min(100%, 28rem);
+		width: min(100%, 30rem);
 	}
 
 	.hero-stat {
@@ -411,8 +411,14 @@ html.weather-sunny .hero-stat:nth-child(3n) .hero-stat-value {
 		border-right: none;
 	}
 
-	.hero-stat:nth-child(-n + 2) {
+	.hero-stat:nth-child(-n + 4) {
 		border-bottom: 1px solid rgba(185, 215, 230, 0.1);
+	}
+
+	.hero-stat:last-child {
+		grid-column: 1 / -1;
+		border-right: none;
+		border-bottom: none;
 	}
 
 	.hero-stat-label {
