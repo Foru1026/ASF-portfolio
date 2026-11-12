@@ -1,3 +1,4 @@
+import { HomeAuroraBg } from '../components/home-aurora-bg';
 import { PageShell } from '../components/page-shell';
 import { AboutMe } from '../sections/about-me.section';
 import { Contact } from '../sections/contact.section';
@@ -12,6 +13,7 @@ export const HomePage = () => (
 	<PageShell
 		title='Ben Clark | AI & Software Engineer'
 		home
+		backdrop={<HomeAuroraBg />}
 	>
 		<InfoSection />
 		<Expertise />

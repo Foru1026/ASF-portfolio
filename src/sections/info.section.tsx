@@ -8,6 +8,12 @@ export const InfoSection = () => {
 			className='hero-section'
 			id='home'
 		>
+			<div className='hero-orbs' aria-hidden='true'>
+				<span className='hero-orb hero-orb-1' />
+				<span className='hero-orb hero-orb-2' />
+				<span className='hero-orb hero-orb-3' />
+			</div>
+
 			<div className='hero-content'>
 				<Reveal delay={0}>
 					<p className='hero-greeting'>{personal.greeting}</p>
@@ -78,6 +84,8 @@ export const InfoSection = () => {
 					</div>
 				</Reveal>
 			</div>
+
+			<div className='blur' />
 		</section>
 	);
 };
