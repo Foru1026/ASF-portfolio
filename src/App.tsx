@@ -4,7 +4,7 @@ import { MouseTrail } from './components/mouse-trail';
 import { Navbar } from './components/navbar';
 import { ScrollBar } from './components/scroll-bar';
 import { SiteFooter } from './components/site-footer';
-import { FallingStarsLayer } from './components/starfield-bg';
+import { FallingStarsLayer, StarfieldBg } from './components/starfield-bg';
 import { ToastProvider } from './components/toast-provider';
 import { HomePage } from './pages/home-page';
 import './styles/about-me.css';
@@ -33,6 +33,7 @@ import './styles/visitor-contact.css';
 
 const SiteShell = () => (
 	<>
+		<StarfieldBg />
 		<HexBg />
 		<ScrollBar />
 		<MouseTrail />

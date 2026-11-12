@@ -5,8 +5,9 @@
 	align-items: center;
 	flex-direction: column;
 	position: relative;
+	isolation: isolate;
 	padding: 7rem 1.5rem 5rem;
-	overflow: visible;
+	overflow: clip;
 }
 
 .hero-orbs {

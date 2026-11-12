@@ -7,6 +7,13 @@
 	background: #02060e;
 }
 
+/* One-page hero: aurora matches ASF home, scrolls away into starfield sections */
+.hero-section > .home-aurora {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
 .home-aurora > span,
 .home-aurora-effects,
 .home-aurora-image {
