@@ -36,8 +36,8 @@ export const AboutMe = () => {
 						</div>
 
 						<footer className='about-story-footer'>
-							<span>AI Automation</span>
-							<span>Based in La Habra, CA</span>
+							<span>Senior AI & Full Stack</span>
+							<span>Based in Wrocław, Poland</span>
 						</footer>
 					</article>
 				</Reveal>
@@ -46,7 +46,7 @@ export const AboutMe = () => {
 					<div className='about-skills-block'>
 						<div className='about-skills-heading'>
 							<h3>How I Work</h3>
-							<p>What I bring to every engagement</p>
+							<p>Habits that keep projects honest</p>
 						</div>
 
 						<div className='trait-grid'>

@@ -133,12 +133,12 @@ export const highlights: Highlight[] = [
 ];
 
 export const traits: string[] = [
-	'AI agent development',
-	'Full-stack engineering',
-	'LLM integration',
-	'Workflow automation',
-	'RAG and tool calling',
-	'Production reliability',
+	'Clear requirements first',
+	'Ship in small steps',
+	'Own production issues',
+	'Readable code over cleverness',
+	'Human review where it matters',
+	'Measure before claiming wins',
 ];
 
 export const expertise: ExpertiseItem[] = [
@@ -490,11 +490,12 @@ export const about = {
 		title: 'About',
 		subtitle: 'Me',
 		summary:
-			'Senior AI & Full Stack Engineer in Wrocław, Poland, building agents, LLM apps, and production software',
+			'Senior engineer in Wrocław — I ship AI features and full-stack products that hold up in production',
 	},
 	intro: [
-		'I am Ben Clark, a Senior AI & Full Stack Engineer with 9 years of experience in AI training, AI automation, LLM integration, AI agent development, workflow orchestration, and production systems.',
-		'I build systems that connect LLMs, APIs, business data, and SaaS platforms into reliable workflows, with deep work in RAG, tool-based agent execution, human-in-the-loop controls, and full-stack product delivery with React, TypeScript, and Node.js.',
+		"I'm Ben Clark. I live in Wrocław, Poland, and I've spent about nine years building software — first document and backend systems, then automation platforms, and more recently AI-assisted products people actually use day to day.",
+		"Most of my work sits between product and engineering. At Devjam I shipped React/TypeScript/Node features end to end, including LLM-backed flows with permissions and fallbacks. Before that at Lindy I designed agent workflows with approval steps so uncertain actions didn't run unchecked. Earlier roles at n8n and Affinda taught me how messy real data and integrations get once you leave the demo.",
+		"I care less about flashy prototypes and more about systems that stay up: validation, logging, tests, CI/CD, and clear handoffs when a human needs to decide. If you're looking for someone who can own a feature from UI through API to production ops, that's the lane I work in.",
 	],
 };
 

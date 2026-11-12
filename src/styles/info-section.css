@@ -197,39 +197,46 @@
 .hero-stats {
 	position: relative;
 	display: grid;
-	grid-template-columns: repeat(5, minmax(0, 1fr));
-	gap: 1.15rem;
-	width: 100%;
-	max-width: 1080px;
-	margin-top: 4.5rem;
-	padding: 1.5rem 0.5rem 0;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0;
+	width: min(100%, 52rem);
+	margin: 4.5rem auto 0;
+	padding: 0.35rem;
+	border-radius: 18px;
+	border: 1px solid rgba(185, 215, 230, 0.16);
+	background:
+		linear-gradient(
+			180deg,
+			rgba(205, 230, 242, 0.08) 0%,
+			rgba(255, 255, 255, 0.025) 45%,
+			rgba(6, 12, 18, 0.28) 100%
+		),
+		rgba(8, 14, 22, 0.55);
+	backdrop-filter: blur(12px) saturate(1.05);
+	box-shadow:
+		inset 0 1px 0 rgba(235, 248, 255, 0.18),
+		0 18px 40px rgba(0, 0, 0, 0.28);
+	overflow: hidden;
 }
 
 .hero-stat {
 	position: relative;
 	overflow: hidden;
 	isolation: isolate;
-	padding: 1.35rem 0.85rem;
-	border-radius: 14px;
-	border: 1px solid rgba(185, 215, 230, 0.16);
-	background:
-		linear-gradient(
-			180deg,
-			rgba(205, 230, 242, 0.09) 0%,
-			rgba(255, 255, 255, 0.03) 42%,
-			rgba(6, 12, 18, 0.22) 100%
-		),
-		rgba(255, 255, 255, 0.028);
-	backdrop-filter: blur(11px) saturate(1.05);
-	box-shadow:
-		inset 0 1px 0 rgba(235, 248, 255, 0.22),
-		inset 0 -1px 0 rgba(120, 160, 185, 0.08),
-		inset 0 -22px 30px rgba(100, 150, 175, 0.04);
+	padding: 1.25rem 0.95rem;
+	border-radius: 0;
+	border: none;
+	border-right: 1px solid rgba(185, 215, 230, 0.1);
+	background: transparent;
+	backdrop-filter: none;
+	box-shadow: none;
 	transition:
-		transform 0.3s ease,
-		border-color 0.8s ease,
-		box-shadow 0.8s ease,
-		background 1.2s ease;
+		background 0.3s ease,
+		border-color 0.8s ease;
+}
+
+.hero-stat:last-child {
+	border-right: none;
 }
 
 html.weather-sunny .hero-stat {
@@ -310,13 +317,7 @@ html.weather-sunny .hero-stat:nth-child(3n) .hero-stat-value {
 }
 
 .hero-stat:hover {
-	transform: translateY(-4px);
-	border-color: rgba(180, 220, 240, 0.34);
-	box-shadow:
-		inset 0 1px 0 rgba(235, 248, 255, 0.3),
-		inset 0 -1px 0 rgba(120, 160, 185, 0.1),
-		inset 0 -22px 30px rgba(120, 175, 200, 0.06),
-		0 10px 28px rgba(0, 0, 0, 0.28);
+	background: rgba(255, 255, 255, 0.04);
 }
 
 .hero-stat-value,
@@ -390,14 +391,21 @@ html.weather-sunny .hero-stat:nth-child(3n) .hero-stat-value {
 
 @media screen and (max-width: 900px) {
 	.hero-stats {
-		grid-template-columns: repeat(5, minmax(0, 1fr));
-		gap: 0.65rem;
-		max-width: 100%;
-		padding-inline: 0.25rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		width: min(100%, 28rem);
+		margin-top: 3.25rem;
 	}
 
 	.hero-stat {
-		padding: 1rem 0.45rem;
+		padding: 1rem 0.7rem;
+	}
+
+	.hero-stat:nth-child(2n) {
+		border-right: none;
+	}
+
+	.hero-stat:nth-child(-n + 2) {
+		border-bottom: 1px solid rgba(185, 215, 230, 0.1);
 	}
 
 	.hero-stat-label {
@@ -408,23 +416,7 @@ html.weather-sunny .hero-stat:nth-child(3n) .hero-stat-value {
 
 @media screen and (max-width: 560px) {
 	.hero-stats {
-		display: flex;
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		gap: 0.85rem;
-		padding: 1.25rem 1rem 0.5rem;
-		scroll-snap-type: x mandatory;
-		-webkit-overflow-scrolling: touch;
-		scrollbar-width: none;
-	}
-
-	.hero-stats::-webkit-scrollbar {
-		display: none;
-	}
-
-	.hero-stat {
-		flex: 0 0 7.25rem;
-		scroll-snap-align: start;
+		width: 100%;
 	}
 }
 

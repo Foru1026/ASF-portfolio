@@ -3,12 +3,7 @@ import { GlowLink } from '../components/glow-box-link';
 import { LayeredSectionTitle } from '../components/layered-section-title';
 import { Reveal } from '../components/reveal';
 import { useToast } from '../components/toast-provider';
-import {
-	contact,
-	gmailComposeUrl,
-	socialLinks,
-	whatsappUrl,
-} from '../data/portfolio';
+import { contact, socialLinks } from '../data/portfolio';
 import { discordContactHref, openDiscordContact } from '../lib/discord-contact';
 
 const socialLinkProps = (
@@ -53,25 +48,6 @@ export const Contact = () => {
 							<div className='contact-card glass-card'>
 								<h2>{contact.headline}</h2>
 								<p>{contact.subtext}</p>
-
-								<div className='contact-actions'>
-									<a
-										href={gmailComposeUrl}
-										className='comet-btn comet-btn-discord comet-btn-lg'
-										target='_blank'
-										rel='noopener noreferrer'
-									>
-										Send Email
-									</a>
-									<a
-										href={whatsappUrl}
-										className='comet-btn comet-btn-contact comet-btn-lg'
-										target='_blank'
-										rel='noopener noreferrer'
-									>
-										WhatsApp
-									</a>
-								</div>
 
 								<div className='contact-links'>
 									{socialLinks.map((link) => (
