@@ -1,5 +1,4 @@
 import { HeroName3D } from '../components/hero-name-3d';
-import { HomeAuroraBg } from '../components/home-aurora-bg';
 import { Reveal } from '../components/reveal';
 import { highlights, personal } from '../data/portfolio';
 
@@ -9,8 +8,6 @@ export const InfoSection = () => {
 			className='hero-section'
 			id='home'
 		>
-			<HomeAuroraBg />
-
 			<div className='hero-orbs' aria-hidden='true'>
 				<span className='hero-orb hero-orb-1' />
 				<span className='hero-orb hero-orb-2' />

@@ -10,7 +10,7 @@ import { VisitorNote } from '../sections/visitor-note.section';
 
 export const HomePage = () => (
 	<PageShell
-		title='Ben Clark | AI & Software Engineer'
+		title='Ben Clark | Senior AI & Full Stack Engineer'
 		home
 	>
 		<InfoSection />

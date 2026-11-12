@@ -5,7 +5,9 @@ import {
 	FaCogs,
 	FaLayerGroup,
 	FaLinkedin,
+	FaNodeJs,
 	FaPython,
+	FaReact,
 	FaTelegram,
 	FaWhatsapp,
 } from 'react-icons/fa';
@@ -13,9 +15,11 @@ import { IoMailOutline } from 'react-icons/io5';
 import {
 	SiDiscord,
 	SiDocker,
+	SiExpress,
 	SiFastapi,
 	SiPostgresql,
 	SiRedis,
+	SiTypescript,
 } from 'react-icons/si';
 import { TbBrandOpenai } from 'react-icons/tb';
 
@@ -84,14 +88,14 @@ export const personal = {
 	name: 'Ben',
 	heroName: 'BEN CLARK',
 	heroNameLines: ['BEN CLARK'],
-	heroBadge: 'AI & Software Engineer',
-	heroServices: ['AI Agents', 'Software Engineering', 'Workflow Automation'],
+	heroBadge: 'Senior AI & Full Stack Engineer',
+	heroServices: ['AI Agents', 'Full Stack', 'Workflow Automation'],
 	fullName: 'Ben Clark',
 	originalName: 'Ben Clark',
-	title: 'AI & Software Engineer',
+	title: 'Senior AI & Full Stack Engineer',
 	tagline:
-		'I build production AI agents and software systems that connect LLMs, APIs, business data, and SaaS platforms into reliable operational workflows.',
-	location: 'La Habra, CA, United States',
+		'AI & Software Engineer with 9 years of experience in AI training, LLM integration, AI agent development, workflow orchestration, and production automation systems.',
+	location: 'Wrocław, Poland',
 	email: 'benclarkk1026@gmail.com',
 	whatsappNumber: '+1 (730) 210-3965',
 	telegramUsername: 'foru10261',
@@ -99,8 +103,8 @@ export const personal = {
 	discordUserId: '',
 	linkedinUrl: 'https://www.linkedin.com/in/benclark1026',
 	greeting: "Hi, I'm",
-	heroLead: 'AI & Software Engineer | Agents | Backend Systems',
-	model: 'Available for remote AI and software engineering work',
+	heroLead: 'Senior AI & Full Stack Engineer | Agents | React & Node',
+	model: 'Available for remote AI and full-stack engineering work',
 };
 
 export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
@@ -122,18 +126,18 @@ export const navLinks: NavLink[] = [
 ];
 
 export const highlights: Highlight[] = [
-	{ value: '6+', label: 'Years Experience' },
+	{ value: '9+', label: 'Years Experience' },
 	{ value: 'AI Agents', label: 'Focus' },
-	{ value: 'Python', label: 'Backend' },
+	{ value: 'Full Stack', label: 'React & Node' },
 	{ value: 'Production', label: 'Systems' },
 ];
 
 export const traits: string[] = [
 	'AI agent development',
-	'Software engineering',
+	'Full-stack engineering',
+	'LLM integration',
 	'Workflow automation',
 	'RAG and tool calling',
-	'Human-in-the-loop controls',
 	'Production reliability',
 ];
 
@@ -141,67 +145,67 @@ export const expertise: ExpertiseItem[] = [
 	{
 		title: 'AI Agents & LLM Applications',
 		description:
-			'Design and ship AI-agent workflows that combine LLM reasoning with business context, structured data, external APIs, and tool-based execution for multi-step processes.',
+			'Design AI-agent workflows that combine LLM reasoning with business context, structured data, external APIs, and tool-based execution for multi-step production processes.',
 		icon: FaBrain,
 		iconColor: 'rgb(168, 130, 255)',
 		glowColor: 'rgba(168, 130, 255, 0.55)',
 		tags: ['AI Agents', 'LLM Apps', 'Tool Calling', 'MCP', 'RAG'],
 	},
 	{
+		title: 'Full-Stack Product Engineering',
+		description:
+			'Ship production features with React, TypeScript, Node.js, REST APIs, and PostgreSQL across UX, service logic, and operations, with strong focus on performance and reliability.',
+		icon: FaReact,
+		iconColor: 'rgb(97, 219, 251)',
+		glowColor: 'rgba(97, 219, 251, 0.55)',
+		tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'APIs'],
+	},
+	{
 		title: 'Workflow Automation',
 		description:
-			'Build reusable automations for data sync, business processes, notifications, and application integrations, with validation, retries, logging, and controlled execution.',
+			'Build reusable automations for data sync, business processes, notifications, and SaaS integrations, with validation, retries, logging, and controlled execution.',
 		icon: FaCogs,
 		iconColor: 'rgb(31, 195, 255)',
 		glowColor: 'rgba(31, 195, 255, 0.55)',
 		tags: ['Orchestration', 'n8n', 'APIs', 'Retries', 'Validation'],
 	},
 	{
-		title: 'Software Engineering & APIs',
+		title: 'Backend & DevOps',
 		description:
-			'Python services, FastAPI, REST APIs, PostgreSQL, Redis, document processing, and data pipelines that connect AI outputs to downstream business systems.',
+			'Python/FastAPI and Node services, Docker, CI/CD, automated testing, logging, and production debugging that keep AI and product systems available and maintainable.',
 		icon: FaPython,
 		iconColor: 'rgb(55, 118, 171)',
 		glowColor: 'rgba(55, 118, 171, 0.6)',
-		tags: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'APIs'],
-	},
-	{
-		title: 'Systems & Integrations',
-		description:
-			'CRM and SaaS integrations, business-system wiring, exception handling, human-approval paths, and cloud deployment for dependable production software.',
-		icon: FaLayerGroup,
-		iconColor: 'rgb(74, 222, 128)',
-		glowColor: 'rgba(74, 222, 128, 0.55)',
-		tags: ['CRM', 'SaaS', 'HITL', 'Logging', 'Cloud'],
+		tags: ['Python', 'FastAPI', 'Docker', 'CI/CD', 'Testing'],
 	},
 ];
 
 export const projects: ProjectItem[] = [
 	{
-		title: 'AI Lead Qualification & Demo Scheduling',
+		title: 'AI-Ready Product Flows',
 		description:
-			'AI automation for inbound sales: prospect research, business qualification, CRM retrieval, personalized outreach, routing, and meeting scheduling, with structured handoffs and human escalation for uncertain cases.',
-		stack: ['AI Agents', 'CRM', 'Qualification', 'Scheduling', 'HITL'],
+			'Designed application flows for LLM-backed assistants, document retrieval, and structured output processing, with permissions, fallback behavior, and clear user experience.',
+		stack: ['LLM', 'RAG', 'React', 'APIs', 'UX'],
 		featured: true,
 	},
 	{
-		title: 'Enterprise Invoice Reconciliation',
+		title: 'Full-Stack Performance Platform',
 		description:
-			'AI agent workflow that extracts invoice data, retrieves matching financial records, compares amounts and line items, flags discrepancies, and routes exceptions for human review before acceptance.',
-		stack: ['Document AI', 'RAG', 'Validation', 'Finance', 'HITL'],
+			'Built reusable frontend components across 15+ production features and optimized rendering, APIs, and database access, contributing to about 35% performance improvement.',
+		stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Perf'],
 		featured: true,
-	},
-	{
-		title: 'Document Intelligence Pipelines',
-		description:
-			'Python services for document-intensive processes: extract structured fields, validate results, and push clean data into downstream business systems with production logging and retries.',
-		stack: ['Python', 'ML', 'APIs', 'PostgreSQL', 'Validation'],
 	},
 	{
 		title: 'Multi-step Agent Orchestration',
 		description:
-			'Production agent workflows for research, communication, scheduling, and ops execution, combining LLM reasoning with tools, APIs, state management, and controlled human-approval paths.',
-		stack: ['AI Agents', 'Tool Calling', 'APIs', 'Orchestration', 'MCP'],
+			'Production agent workflows for research, communication, scheduling, and ops execution, combining LLM reasoning with tools, APIs, state management, and human-approval paths.',
+		stack: ['AI Agents', 'Tool Calling', 'APIs', 'Orchestration', 'HITL'],
+	},
+	{
+		title: 'Document Intelligence Pipelines',
+		description:
+			'Python services for document-intensive processes: extract structured fields, validate results, and connect clean data to downstream business systems.',
+		stack: ['Python', 'ML', 'APIs', 'PostgreSQL', 'Validation'],
 	},
 ];
 
@@ -210,7 +214,7 @@ export const expertiseSection = {
 		title: 'What I',
 		subtitle: 'Build',
 		summary:
-			'AI agents, backend software, and workflow automation that connect models to real business systems.',
+			'AI agents, full-stack products, and workflow automation that connect models to real business systems.',
 	},
 };
 
@@ -219,7 +223,7 @@ export const projectsSection = {
 		title: 'Selected',
 		subtitle: 'Work',
 		summary:
-			'Personal AI and software engineering projects across sales ops, finance, documents, and agent orchestration',
+			'Selected AI and full-stack work across assistants, performance, agent orchestration, and document intelligence',
 	},
 };
 
@@ -228,7 +232,7 @@ export const contact = {
 		title: 'Get In',
 		subtitle: 'Touch',
 		summary:
-			'Open to AI engineering, software systems, and longer-term product collaborations.',
+			'Open to AI engineering, full-stack product work, and longer-term collaborations.',
 	},
 	headline: 'Tell me what you are building.',
 	subtext:
@@ -329,11 +333,11 @@ export const about = {
 		title: 'About',
 		subtitle: 'Me',
 		summary:
-			'AI & Software Engineer in La Habra, CA, building production agents, backends, and workflow systems',
+			'Senior AI & Full Stack Engineer in Wrocław, Poland, building agents, LLM apps, and production software',
 	},
 	intro: [
-		'I am Ben Clark, an AI & Software Engineer with 6 years of experience in AI agent development, workflow orchestration, and production automation systems. I build software that connects LLMs, APIs, business data, and SaaS platforms into reliable operational workflows.',
-		'My work spans Python backends, REST APIs, RAG, tool-based agent execution, MCP, validation, exception handling, and human-in-the-loop controls. I turn business requirements into maintainable systems with clear validation and controlled handoffs.',
+		'I am Ben Clark, a Senior AI & Full Stack Engineer with 9 years of experience in AI training, AI automation, LLM integration, AI agent development, workflow orchestration, and production systems.',
+		'I build systems that connect LLMs, APIs, business data, and SaaS platforms into reliable workflows, with deep work in RAG, tool-based agent execution, human-in-the-loop controls, and full-stack product delivery with React, TypeScript, and Node.js.',
 	],
 };
 
@@ -342,16 +346,28 @@ export const experience = {
 		title: 'Career',
 		subtitle: 'Path',
 		summary:
-			'Personal path from document AI and backend platforms to production AI agents and software systems',
+			'From document AI and automation platforms to senior AI and full-stack product engineering',
 	},
 	timeline: [
 		{
 			heading: 'Experience',
 			items: [
 				{
+					role: 'Senior AI & Full Stack Engineer',
+					org: 'Devjam · Hamburg, Germany',
+					period: '2025 to 2026',
+					bullets: [
+						'Engineered full-stack product features using React, TypeScript, Node.js, REST APIs, and PostgreSQL across UX, service logic, and production operations.',
+						'Designed AI-ready application flows for LLM-backed assistants, document retrieval, and structured output processing, with permissions and fallback behavior.',
+						'Built reusable frontend components across 15+ production features and optimized rendering, APIs, and database access (~35% performance improvement).',
+						'Improved resilience through incident investigation, API validation, logging, containerization, automated testing, and CI/CD; supported 99%+ availability.',
+						'Collaborated with product and engineering stakeholders on architecture, trade-offs, reviews, and releases.',
+					],
+				},
+				{
 					role: 'AI Automation / AI Agent Engineer',
 					org: 'Lindy · San Francisco, CA',
-					period: '2024 to 2026',
+					period: '2022 to 2025',
 					bullets: [
 						'Designed AI-agent workflows for multi-step business processes involving research, communication, scheduling, and operational execution.',
 						'Built agent workflows combining LLM reasoning with business context, structured data, external APIs, and application integrations.',
@@ -363,19 +379,18 @@ export const experience = {
 				{
 					role: 'Software Engineer → Automation Engineer',
 					org: 'n8n · Berlin, Germany',
-					period: '2022 to 2024',
+					period: '2021 to 2022',
 					bullets: [
 						'Developed backend services and workflow automations connecting APIs, databases, SaaS applications, and internal business systems.',
 						'Built reusable automation workflows for data synchronization, business processes, notifications, and application integrations.',
 						'Integrated AI capabilities into workflow-driven applications by combining structured business rules with model-generated decisions.',
 						'Improved workflow reliability through validation, error handling, logging, retries, and controlled execution.',
-						'Collaborated across engineering and product to deliver maintainable automation solutions.',
 					],
 				},
 				{
-					role: 'Software Engineer → AI/ML Engineer',
-					org: 'Affinda · Melbourne, Australia',
-					period: '2020 to 2022',
+					role: 'Software Engineer',
+					org: 'Affinda · Victoria, Australia',
+					period: '2018 to 2021',
 					bullets: [
 						'Developed software and AI/ML workflows for document-intensive business processes and automated information extraction.',
 						'Built Python services for processing business documents, extracting structured information, and connecting results to downstream systems.',
@@ -390,13 +405,12 @@ export const experience = {
 			heading: 'Education',
 			items: [
 				{
-					role: 'Bachelor of Science Honours in Computer Science',
-					org: 'Hong Kong Baptist University',
-					period: '2016 to 2020',
+					role: 'Bachelor of Science in Computer Science',
+					org: 'Wrocław University of Science and Technology',
+					period: '2014 to 2018',
 					bullets: [
-						'Completed BSc (Hons) Computer Science in Hong Kong.',
-						'International study and exchange experience in Australia during the degree.',
-						'Dean’s Honors List · CSUF Alumni Association Scholarship · Engineering & Computer Science Scholarship.',
+						'Completed BSc Computer Science studies in Poland.',
+						'Foundation in software engineering, systems, and applied computing.',
 					],
 				},
 			],
@@ -409,7 +423,7 @@ export const techStack = {
 		title: 'Tech',
 		subtitle: 'Stack',
 		summary:
-			'Tools I use to build AI agents, backend services, and production workflow systems',
+			'Frontend, backend, AI, and DevOps tools I use to ship production systems',
 	},
 	groups: [
 		{
@@ -442,7 +456,36 @@ export const techStack = {
 			],
 		},
 		{
-			heading: 'Backend',
+			heading: 'Frontend',
+			items: [
+				{
+					label: 'React',
+					icon: FaReact,
+					iconColor: 'rgb(97, 219, 251)',
+					glowColor: 'rgba(97, 219, 251, 0.55)',
+				},
+				{
+					label: 'TypeScript',
+					icon: SiTypescript,
+					iconColor: 'rgb(49, 120, 198)',
+					glowColor: 'rgba(49, 120, 198, 0.55)',
+				},
+				{
+					label: 'Node.js',
+					icon: FaNodeJs,
+					iconColor: 'rgb(104, 160, 99)',
+					glowColor: 'rgba(104, 160, 99, 0.55)',
+				},
+				{
+					label: 'Express.js',
+					icon: SiExpress,
+					iconColor: 'rgb(200, 200, 200)',
+					glowColor: 'rgba(200, 200, 200, 0.45)',
+				},
+			],
+		},
+		{
+			heading: 'Backend & Cloud',
 			items: [
 				{
 					label: 'Python',
@@ -468,11 +511,6 @@ export const techStack = {
 					iconColor: 'rgb(220, 56, 45)',
 					glowColor: 'rgba(220, 56, 45, 0.6)',
 				},
-			],
-		},
-		{
-			heading: 'Systems & Cloud',
-			items: [
 				{
 					label: 'Docker',
 					icon: SiDocker,
@@ -484,18 +522,6 @@ export const techStack = {
 					icon: FaAws,
 					iconColor: 'rgb(255, 153, 0)',
 					glowColor: 'rgba(255, 153, 0, 0.6)',
-				},
-				{
-					label: 'SaaS Integrations',
-					icon: FaLayerGroup,
-					iconColor: 'rgb(74, 222, 128)',
-					glowColor: 'rgba(74, 222, 128, 0.55)',
-				},
-				{
-					label: 'API Integration',
-					icon: FaCogs,
-					iconColor: 'rgb(97, 219, 251)',
-					glowColor: 'rgba(97, 219, 251, 0.55)',
 				},
 			],
 		},

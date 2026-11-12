@@ -35,8 +35,8 @@ export const SiteFooter = () => {
 							<span className='site-footer-brand-name'>{personal.fullName}</span>
 						</a>
 						<p className='site-footer-blurb'>
-							Personal portfolio of an AI & Software Engineer building agents,
-							backends, and production workflow systems.
+							Personal portfolio of a Senior AI & Full Stack Engineer building
+							agents, LLM apps, and production software systems.
 						</p>
 					</div>
 
