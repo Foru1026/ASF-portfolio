@@ -10,14 +10,14 @@
 	],
 	"license": "MIT",
 	"type": "module",
-	"homepage": "https://github.com/buildflux26",
+	"homepage": "https://github.com/clarkk1026",
 	"author": {
 		"name": "Ben Clark",
-		"url": "https://github.com/buildflux26"
+		"url": "https://github.com/clarkk1026"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/buildflux26"
+		"url": "https://github.com/clarkk1026"
 	},
 	"scripts": {
 		"dev": "vite",

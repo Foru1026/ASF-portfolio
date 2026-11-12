@@ -30,6 +30,17 @@
 
 .page-shell-home {
 	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.page-shell-home > .page-shell-content > section + section {
+	scroll-margin-top: 5.5rem;
+	padding-top: clamp(3rem, 7vh, 5rem);
+	padding-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.page-shell-home > .page-shell-content > #home {
+	scroll-margin-top: 0;
 }
 
 .page-shell-backdrop {

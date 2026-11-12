@@ -99,7 +99,7 @@ export const MouseTrail = () => {
 		let height = window.innerHeight;
 		let rafId = 0;
 		let active = false;
-		let overAiBot = false;
+		let overInteractive = false;
 
 		let pointerX = -100;
 		let pointerY = -100;
@@ -146,9 +146,8 @@ export const MouseTrail = () => {
 			}
 			active = true;
 			const target = e.target as Element | null;
-			overAiBot = Boolean(
-				target?.closest('.ai-bot-interactive') ||
-					target?.closest('.visitor-note-interactive'),
+			overInteractive = Boolean(
+				target?.closest('.visitor-note-interactive'),
 			);
 
 			const coalesced =
@@ -230,7 +229,7 @@ export const MouseTrail = () => {
 			ctx.clearRect(0, 0, width, height);
 
 			const hideTrail =
-				overAiBot ||
+				overInteractive ||
 				document.body.classList.contains('scroll-comet-dragging');
 
 			const deltaX = pointerX - prevPointerX;

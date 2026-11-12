@@ -112,13 +112,13 @@ export const whatsappUrl = 'https://wa.me/15626034526';
 export const telegramUrl = `https://t.me/${personal.telegramUsername}`;
 
 export const navLinks: NavLink[] = [
-	{ label: 'Expertise', href: '/expertise' },
-	{ label: 'Path', href: '/path' },
-	{ label: 'Projects', href: '/projects' },
-	{ label: 'Tech', href: '/tech' },
-	{ label: 'Voices', href: '/voices' },
-	{ label: 'About', href: '/about' },
-	{ label: 'Contact', href: '/contact' },
+	{ label: 'Expertise', href: '#expertise' },
+	{ label: 'Path', href: '#experience' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Tech', href: '#tech-stack' },
+	{ label: 'Voices', href: '#visitor-voices' },
+	{ label: 'About', href: '#about-me' },
+	{ label: 'Contact', href: '#contact' },
 ];
 
 export const highlights: Highlight[] = [
@@ -207,60 +207,12 @@ export const projects: ProjectItem[] = [
 		url: 'https://tinyfish.chat/',
 	},
 	{
-		title: 'augLab',
-		description:
-			'No-code AI agent builder for agents, teams, and workflows. Connect models and tools, run visual pipelines, and embed chat widgets in production.',
-		stack: ['No-code', 'AI Agents', 'Workflows', 'MCP', 'Embeds'],
-		image: projectPreview('https://auglab.ai'),
-		url: 'https://auglab.ai/',
-	},
-	{
-		title: 'Mazaal AI',
-		description:
-			'Intelligent automation platform to build AI agents for sales, support, and ops, then deploy them across chat, email, Slack, and other channels.',
-		stack: ['AI Agents', 'Multichannel', 'Workflows', 'Integrations', 'MCP'],
-		image: projectPreview('https://mazaal.ai'),
-		url: 'https://mazaal.ai/',
-	},
-	{
 		title: 'Workbird',
 		description:
 			'AI automation platform for building agent workflows with MCP servers, app integrations, browser automation, scheduling, and human approval steps.',
 		stack: ['AI Agents', 'MCP', 'Workflows', 'Browser', 'Integrations'],
 		image: projectPreview('https://workbird.io'),
 		url: 'https://workbird.io/',
-	},
-	{
-		title: 'Redbird',
-		description:
-			'Conversational AI workflow automation for analytics, operations, and reporting, with inspectable steps, human-in-the-loop controls, and reliable reruns.',
-		stack: ['Analytics', 'HITL', 'Workflows', 'Integrations', 'Reporting'],
-		image: projectPreview('https://www.redbird.io'),
-		url: 'https://www.redbird.io/',
-	},
-	{
-		title: 'Oya',
-		description:
-			'Turn successful agent tasks into inspectable, replayable workflows. Record a browser run once, then replay it as code without re-spending tokens every time.',
-		stack: ['Browser Agents', 'Playbooks', 'MCP', 'Replay', 'Automation'],
-		image: projectPreview('https://getoya.ai'),
-		url: 'https://getoya.ai/',
-	},
-	{
-		title: 'APInstant',
-		description:
-			'Form and web workflow automation via visual builder and HTTP API: multi-step browser runs for form filling, data extraction, and government form flows.',
-		stack: ['Browser Automation', 'Forms', 'API', 'Workflows', 'Extraction'],
-		image: projectPreview('https://apinstant.app'),
-		url: 'https://apinstant.app/',
-	},
-	{
-		title: 'Dugong',
-		description:
-			'Plain-English AI workflow automation. Describe triggers and steps in natural language; an agent reasons through each step and calls your apps directly.',
-		stack: ['AI Agents', 'No-code', 'Integrations', 'Plain English', 'Ops'],
-		image: projectPreview('https://dugong.live'),
-		url: 'https://dugong.live/',
 	},
 ];
 
@@ -278,7 +230,7 @@ export const projectsSection = {
 		title: 'Selected',
 		subtitle: 'Work',
 		summary:
-			'Live AI agent and workflow automation products across sales, ops, analytics, and web automation',
+			'Featured AI agent and workflow automation products across sales, ops, and web automation',
 	},
 };
 
@@ -393,66 +345,6 @@ export const about = {
 	intro: [
 		'I am Ben Clark, an AI Automation Engineer with 6 years of experience across software engineering, AI/ML, workflow automation, document intelligence, and AI agent development. I build production systems that connect LLM applications with APIs, business data, SaaS platforms, and operational workflows.',
 		'My background spans Python backends, REST APIs, RAG, tool calling, MCP, validation, exception handling, and human-in-the-loop controls. I focus on turning business requirements into dependable automation that can run multi-step processes with clear validation and controlled handoffs.',
-	],
-};
-
-export const benStory = {
-	summary:
-		'Ben Clark is an AI Automation Engineer based in La Habra, CA. He earned a BSc (Hons) in Computer Science from Hong Kong Baptist University (2016–2020), with exchange study in Australia, then built his career through Affinda, n8n, and Lindy.',
-	earlyLife: [
-		'Studied Computer Science at Hong Kong Baptist University (2016–2020), Bachelor of Science Honours.',
-		'Completed international study and exchange experience in Australia during the degree.',
-		'Recognized on the Dean’s Honors List and awarded a CSUF Alumni Association Scholarship.',
-	],
-	entrepreneurship: [
-		'Focused on turning operational requirements into maintainable AI automation systems.',
-		'Structures workflows around clear inputs, business rules, execution steps, validation, and escalation paths.',
-		'Ideas only matter when they solve real problems and create reliable business outcomes.',
-	],
-	technicalLeadership: [
-		'Built AI-agent workflows for research, communication, scheduling, and operational execution at Lindy.',
-		'Developed backend services and workflow automations at n8n connecting APIs, databases, and SaaS systems.',
-		'Delivered document intelligence and AI/ML extraction systems at Affinda for production document automation.',
-	],
-	lifeAndValues: [
-		'Values clear validation, exception handling, and human-in-the-loop controls in production AI.',
-		'Comfortable working across engineering and product to ship maintainable automation.',
-		'Based in La Habra, CA, focused on dependable AI systems that reduce repetitive manual work.',
-	],
-	careerHighlights: [
-		'AI Automation / AI Agent Engineer at Lindy (San Francisco, 2024–2026).',
-		'Software Engineer / Automation Engineer at n8n (Berlin, 2022–2024).',
-		'Software Engineer / AI/ML Engineer at Affinda (Melbourne, 2020–2022).',
-	],
-	lessons: [
-		'Automation only helps when validation and escalation paths are built in from the start.',
-		'LLM reasoning needs business context, structured data, and controlled tool execution.',
-		'Consistency, logging, and retries outlast clever one-off scripts.',
-		'Human approval matters when outputs are uncertain or business judgment is required.',
-	],
-};
-
-/** Human-side interests Bon can mention naturally, not invented CV facts. */
-export const benPersonality = {
-	wellbeing: [
-		'Ben cares about sustainable pace, sleep, breaks, and not burning out on long builds.',
-		'He values simple healthy habits: moving when he can, eating reasonably, and stepping away from the screen when a problem needs fresh eyes.',
-		'Hard work matters to him, but so does recovery, he learned that consistency beats heroic all-nighters.',
-	],
-	music: [
-		'He often listens to music while coding, usually calm or instrumental stuff that helps focus without shouting over his thoughts.',
-		'Music is more mood than genre for him: something steady in the background while he ships features or untangles a bug.',
-		'He is not a musician himself, but a good soundtrack makes long build sessions feel lighter.',
-	],
-	playAndLife: [
-		'For Ben, "play" often means tinkering, side ideas, small experiments, or exploring a new tool just to see what happens.',
-		'He still enjoys learning for its own sake: new tools, better ways of shipping, and how products create value.',
-		'He likes connecting with people who are curious, kind, and building something real, whether that is code or a business.',
-	],
-	valuesForVisitors: [
-		'Encourage people to take care of themselves while they chase ambitious goals.',
-		'Be honest when something is outside his lane, and point people toward Ben when work or collaboration is the real topic.',
-		'Stay warm and human even when the question is silly, random, or not about development.',
 	],
 };
 

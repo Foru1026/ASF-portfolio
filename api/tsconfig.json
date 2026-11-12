@@ -14,14 +14,6 @@
 	},
 	"include": [
 		"./**/*.ts",
-		"../src/lib/ai-bot-chat-handler.ts",
-		"../src/lib/ai-bot-brand.ts",
-		"../src/lib/ai-bot-responses.ts",
-		"../src/lib/ai-bot-groq.ts",
-		"../src/lib/ai-bot-gemini.ts",
-		"../src/lib/ai-bot-visitor-context.ts",
-		"../src/lib/ai-bot-context.ts",
-		"../src/lib/ai-bot-github-guard.ts",
 		"../src/lib/contact-lock.ts",
 		"../src/lib/visitor-notes-types.ts",
 		"../src/data/portfolio.ts"

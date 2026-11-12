@@ -1,31 +1,13 @@
-import {
-	Navigate,
-	Outlet,
-	Route,
-	Routes,
-	useLocation,
-} from 'react-router-dom';
-import { AiBot } from './components/ai-bot';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { HexBg } from './components/hex-bg';
 import { MouseTrail } from './components/mouse-trail';
 import { Navbar } from './components/navbar';
-import { PageKeyNav } from './components/page-key-nav';
 import { ScrollBar } from './components/scroll-bar';
-import { ScrollToTop } from './components/scroll-to-top';
 import { SiteFooter } from './components/site-footer';
-import { FallingStarsLayer, StarfieldBg } from './components/starfield-bg';
+import { FallingStarsLayer } from './components/starfield-bg';
 import { ToastProvider } from './components/toast-provider';
-import { AboutPage } from './pages/about-page';
-import { ContactPage } from './pages/contact-page';
-import { ExpertisePage } from './pages/expertise-page';
 import { HomePage } from './pages/home-page';
-import { PathPage } from './pages/path-page';
-import { ProjectsPage } from './pages/projects-page';
-import { TechPage } from './pages/tech-page';
-import { VoicesPage } from './pages/voices-page';
 import './styles/about-me.css';
-import './styles/ai-bot.css';
-import './styles/earth-fab-globe.css';
 import './styles/brand-logo.css';
 import './styles/comet-btn.css';
 import './styles/contact.css';
@@ -49,74 +31,35 @@ import './styles/tech-stack.css';
 import './styles/visitor-note.css';
 import './styles/visitor-contact.css';
 
-const SiteShell = () => {
-	const { pathname } = useLocation();
-	const isHome = pathname === '/';
-
-	return (
-		<>
-			<ScrollToTop />
-			<PageKeyNav />
-			{!isHome && <StarfieldBg />}
-			<HexBg />
-			<ScrollBar />
-			<MouseTrail />
-			<Navbar />
-			<Outlet />
-			<SiteFooter />
-			<FallingStarsLayer />
-			<AiBot />
-		</>
-	);
-};
+const SiteShell = () => (
+	<>
+		<HexBg />
+		<ScrollBar />
+		<MouseTrail />
+		<Navbar />
+		<HomePage />
+		<SiteFooter />
+		<FallingStarsLayer />
+	</>
+);
 
 function App() {
 	return (
 		<ToastProvider>
 			<Routes>
-				<Route element={<SiteShell />}>
-					<Route
-						index
-						element={<HomePage />}
-					/>
-					<Route
-						path='about'
-						element={<AboutPage />}
-					/>
-					<Route
-						path='expertise'
-						element={<ExpertisePage />}
-					/>
-					<Route
-						path='path'
-						element={<PathPage />}
-					/>
-					<Route
-						path='projects'
-						element={<ProjectsPage />}
-					/>
-					<Route
-						path='tech'
-						element={<TechPage />}
-					/>
-					<Route
-						path='voices'
-						element={<VoicesPage />}
-					/>
-					<Route
-						path='contact'
-						element={<ContactPage />}
-					/>
-					<Route
-						path='*'
-						element={
-							<Navigate
-								to='/'
-								replace
-							/>
-						}
-					/>
-				</Route>
+				<Route
+					path='/'
+					element={<SiteShell />}
+				/>
+				<Route
+					path='*'
+					element={
+						<Navigate
+							to='/'
+							replace
+						/>
+					}
+				/>
 			</Routes>
 		</ToastProvider>
 	);

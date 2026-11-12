@@ -25,6 +25,7 @@
 html {
 	scrollbar-width: none;
 	scroll-behavior: smooth !important;
+	scroll-padding-top: 5.5rem;
 }
 
 * {

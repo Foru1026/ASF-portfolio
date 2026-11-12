@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { BrandLogo } from './brand-logo';
 import { useToast } from './toast-provider';
 import {
@@ -10,12 +9,12 @@ import {
 import { discordContactHref, openDiscordContact } from '../lib/discord-contact';
 
 const portfolioNavLinks = navLinks.filter((link) =>
-	['/expertise', '/projects', '/about', '/contact'].includes(link.href),
+	['#expertise', '#projects', '#about-me', '#contact'].includes(link.href),
 );
 
 const serviceLinks = expertise.slice(0, 4).map((item) => ({
 	label: item.title,
-	href: '/expertise',
+	href: '#expertise',
 }));
 
 export const SiteFooter = () => {
@@ -27,14 +26,14 @@ export const SiteFooter = () => {
 			<div className='site-footer-inner container'>
 				<div className='site-footer-grid'>
 					<div className='site-footer-brand'>
-						<Link
-							to='/'
+						<a
+							href='#home'
 							className='site-footer-logo'
 							aria-label={`${personal.fullName} home`}
 						>
 							<BrandLogo />
 							<span className='site-footer-brand-name'>{personal.fullName}</span>
-						</Link>
+						</a>
 						<p className='site-footer-blurb'>
 							AI Automation Engineer for agents, LLM applications, and
 							production workflow systems.
@@ -49,7 +48,7 @@ export const SiteFooter = () => {
 						<ul className='site-footer-list'>
 							{portfolioNavLinks.map((link) => (
 								<li key={link.href}>
-									<Link to={link.href}>{link.label}</Link>
+									<a href={link.href}>{link.label}</a>
 								</li>
 							))}
 						</ul>
@@ -63,7 +62,7 @@ export const SiteFooter = () => {
 						<ul className='site-footer-list'>
 							{serviceLinks.map((link) => (
 								<li key={link.label}>
-									<Link to={link.href}>{link.label}</Link>
+									<a href={link.href}>{link.label}</a>
 								</li>
 							))}
 						</ul>

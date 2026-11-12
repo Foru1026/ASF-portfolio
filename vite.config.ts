@@ -2,12 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import {
-	handleChatRequest,
-	type ChatRequestBody,
-} from './src/lib/ai-bot-chat-handler';
 import {
 	clearVisitorVote,
 	emptyStore,
@@ -255,54 +251,6 @@ const visitorNotesDevApi = () => ({
 	},
 });
 
-const chatDevApi = (geminiApiKey?: string, groqApiKey?: string) => ({
-	name: 'chat-dev-api',
-	configureServer(server: import('vite').ViteDevServer) {
-		server.middlewares.use('/api/chat', async (req, res) => {
-			res.setHeader('Access-Control-Allow-Origin', '*');
-			res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-			res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-			if (req.method === 'OPTIONS') {
-				res.statusCode = 204;
-				res.end();
-				return;
-			}
-
-			if (req.method !== 'POST') {
-				res.statusCode = 405;
-				res.setHeader('Content-Type', 'application/json');
-				res.end(JSON.stringify({ error: 'Method not allowed' }));
-				return;
-			}
-
-			try {
-				const body = (await readBody(req)) as ChatRequestBody | null;
-				if (!body?.message || typeof body.message !== 'string') {
-					res.statusCode = 400;
-					res.setHeader('Content-Type', 'application/json');
-					res.end(JSON.stringify({ error: 'Invalid payload' }));
-					return;
-				}
-
-				const reply = await handleChatRequest(
-					body,
-					{ geminiApiKey, groqApiKey },
-					req.socket.remoteAddress ?? 'local',
-				);
-
-				res.statusCode = 200;
-				res.setHeader('Content-Type', 'application/json');
-				res.end(JSON.stringify(reply));
-			} catch {
-				res.statusCode = 500;
-				res.setHeader('Content-Type', 'application/json');
-				res.end(JSON.stringify({ error: 'Chat unavailable' }));
-			}
-		});
-	},
-});
-
 const readContactStore = () => {
 	try {
 		const raw = fs.readFileSync(CONTACT_DATA_FILE, 'utf8');
@@ -409,19 +357,10 @@ const visitorContactsDevApi = () => ({
 	},
 });
 
-export default defineConfig(({ mode }) => {
-	const env = loadEnv(mode, process.cwd(), '');
-
-	return {
-		plugins: [
-			react(),
-			visitorNotesDevApi(),
-			visitorContactsDevApi(),
-			chatDevApi(env.GEMINI_API_KEY, env.GROQ_API_KEY),
-		],
-		server: {
-			host: true,
-			open: true,
-		},
-	};
+export default defineConfig({
+	plugins: [react(), visitorNotesDevApi(), visitorContactsDevApi()],
+	server: {
+		host: true,
+		open: true,
+	},
 });
