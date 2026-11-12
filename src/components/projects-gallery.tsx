@@ -10,7 +10,7 @@ import { ProjectCardImage } from './project-card-image';
 import { projects, type ProjectItem } from '../data/portfolio';
 
 const SCROLL_SPEED = 0.65;
-const MIN_THUMB_RATIO = 0.08;
+const MIN_THUMB_RATIO = 0.18;
 
 type ProjectCardProps = {
 	project: ProjectItem;
