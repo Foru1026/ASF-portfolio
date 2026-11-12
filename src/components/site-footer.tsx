@@ -9,7 +9,7 @@ import {
 import { discordContactHref, openDiscordContact } from '../lib/discord-contact';
 
 const portfolioNavLinks = navLinks.filter((link) =>
-	['#expertise', '#projects', '#about-me', '#contact'].includes(link.href),
+	['#about-me', '#expertise', '#projects', '#contact'].includes(link.href),
 );
 
 const focusLinks = expertise.slice(0, 4).map((item) => ({

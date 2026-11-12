@@ -116,12 +116,12 @@ export const whatsappUrl = 'https://wa.me/17302103965';
 export const telegramUrl = `https://t.me/${personal.telegramUsername}`;
 
 export const navLinks: NavLink[] = [
+	{ label: 'About', href: '#about-me' },
 	{ label: 'Expertise', href: '#expertise' },
 	{ label: 'Path', href: '#experience' },
 	{ label: 'Projects', href: '#projects' },
 	{ label: 'Tech', href: '#tech-stack' },
 	{ label: 'Voices', href: '#visitor-voices' },
-	{ label: 'About', href: '#about-me' },
 	{ label: 'Contact', href: '#contact' },
 ];
 
@@ -251,6 +251,39 @@ export const projects: ProjectItem[] = [
 		stack: ['Video', 'Privacy', 'Streaming'],
 		image: projectPreview('https://closedcast.com'),
 		url: 'https://closedcast.com',
+	},
+	{
+		title: 'WorkflowHQ',
+		description:
+			'AI employees for voice, chat, and pipeline work — answer, qualify, book, and follow up across channels.',
+		stack: ['AI Agents', 'Voice', 'CRM', 'Automation'],
+		image: projectPreview('https://www.workflowhq.co'),
+		url: 'https://www.workflowhq.co',
+		featured: true,
+	},
+	{
+		title: 'Mazaal AI',
+		description:
+			'Agent platform for sales, support, and ops — build once, deploy across Slack, email, web, and 50+ models.',
+		stack: ['AI Agents', 'Workflows', 'MCP', 'Integrations'],
+		image: projectPreview('https://mazaal.ai'),
+		url: 'https://mazaal.ai',
+	},
+	{
+		title: 'APInstant',
+		description:
+			'AI browser agent that turns natural-language goals into reusable web automation APIs.',
+		stack: ['Browser Agents', 'API', 'Automation'],
+		image: projectPreview('https://apinstant.app'),
+		url: 'https://apinstant.app',
+	},
+	{
+		title: 'Dugong',
+		description:
+			'Plain-English workflow automation — describe the steps and an AI agent calls your apps directly.',
+		stack: ['No-Code', 'AI Agents', 'Integrations'],
+		image: projectPreview('https://dugong.live'),
+		url: 'https://dugong.live',
 	},
 ];
 

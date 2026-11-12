@@ -14,12 +14,12 @@ export const HomePage = () => (
 		home
 	>
 		<InfoSection />
+		<AboutMe />
 		<Expertise />
 		<WorkExperience />
 		<Projects />
 		<TechStack />
 		<VisitorNote />
-		<AboutMe />
 		<Contact />
 	</PageShell>
 );

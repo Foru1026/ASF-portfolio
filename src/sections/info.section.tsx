@@ -56,16 +56,16 @@ export const InfoSection = () => {
 				<Reveal delay={360}>
 					<div className='hero-actions'>
 						<a
-							href='#projects'
+							href='#about-me'
 							className='comet-btn comet-btn-work comet-btn-lg'
 						>
-							View My Work
+							About Me
 						</a>
 						<a
-							href='#about-me'
+							href='#projects'
 							className='comet-btn comet-btn-contact comet-btn-lg'
 						>
-							About Me
+							View My Work
 						</a>
 					</div>
 				</Reveal>
