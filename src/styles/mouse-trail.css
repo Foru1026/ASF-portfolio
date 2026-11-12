@@ -34,25 +34,25 @@
 }
 
 .mouse-comet-head::before {
-	width: 22px;
-	height: 22px;
+	width: 26px;
+	height: 26px;
 	background: radial-gradient(
 		circle,
-		rgba(230, 238, 246, 0.16) 0%,
-		rgba(150, 175, 200, 0.08) 42%,
-		transparent 72%
+		rgba(245, 250, 255, 0.2) 0%,
+		rgba(190, 220, 240, 0.1) 38%,
+		rgba(140, 175, 205, 0) 72%
 	);
 }
 
 .mouse-comet-head::after {
-	width: 5px;
-	height: 5px;
-	background: rgba(236, 244, 250, 0.92);
+	width: 6px;
+	height: 6px;
+	background: rgba(245, 250, 255, 0.95);
 	box-shadow:
-		0 0 3px 1px rgba(200, 218, 232, 0.55),
-		0 0 calc(5px + var(--comet-impact) * 8px)
-			calc(1px + var(--comet-impact) * 2px)
-			rgba(140, 170, 200, 0.28);
+		0 0 4px 1px rgba(220, 236, 248, 0.7),
+		0 0 calc(7px + var(--comet-impact) * 12px)
+			calc(1px + var(--comet-impact) * 3px)
+			rgba(150, 190, 220, 0.35);
 }
 
 @media screen and (max-width: 750px) {
