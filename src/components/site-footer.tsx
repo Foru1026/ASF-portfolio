@@ -12,7 +12,7 @@ const portfolioNavLinks = navLinks.filter((link) =>
 	['#expertise', '#projects', '#about-me', '#contact'].includes(link.href),
 );
 
-const serviceLinks = expertise.slice(0, 4).map((item) => ({
+const focusLinks = expertise.slice(0, 4).map((item) => ({
 	label: item.title,
 	href: '#expertise',
 }));
@@ -35,8 +35,8 @@ export const SiteFooter = () => {
 							<span className='site-footer-brand-name'>{personal.fullName}</span>
 						</a>
 						<p className='site-footer-blurb'>
-							AI Automation Engineer for agents, LLM applications, and
-							production workflow systems.
+							Personal portfolio of an AI & Software Engineer building agents,
+							backends, and production workflow systems.
 						</p>
 					</div>
 
@@ -56,11 +56,11 @@ export const SiteFooter = () => {
 
 					<nav
 						className='site-footer-col'
-						aria-label='Services'
+						aria-label='Focus'
 					>
-						<h2 className='site-footer-heading'>Services</h2>
+						<h2 className='site-footer-heading'>Focus</h2>
 						<ul className='site-footer-list'>
-							{serviceLinks.map((link) => (
+							{focusLinks.map((link) => (
 								<li key={link.label}>
 									<a href={link.href}>{link.label}</a>
 								</li>

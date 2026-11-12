@@ -11,7 +11,7 @@ import { VisitorNote } from '../sections/visitor-note.section';
 
 export const HomePage = () => (
 	<PageShell
-		title='Ben Clark'
+		title='Ben Clark | AI & Software Engineer'
 		home
 		backdrop={<HomeAuroraBg />}
 	>

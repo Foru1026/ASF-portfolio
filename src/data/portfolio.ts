@@ -84,13 +84,13 @@ export const personal = {
 	name: 'Ben',
 	heroName: 'BEN CLARK',
 	heroNameLines: ['BEN CLARK'],
-	heroBadge: 'AI Automation Engineer',
-	heroServices: ['AI Agents', 'LLM Applications', 'Workflow Automation'],
+	heroBadge: 'AI & Software Engineer',
+	heroServices: ['AI Agents', 'Software Engineering', 'Workflow Automation'],
 	fullName: 'Ben Clark',
 	originalName: 'Ben Clark',
-	title: 'AI Automation Engineer',
+	title: 'AI & Software Engineer',
 	tagline:
-		'I build production AI agent systems that connect LLM applications with APIs, business data, SaaS platforms, and operational workflows.',
+		'I build production AI agents and software systems that connect LLMs, APIs, business data, and SaaS platforms into reliable operational workflows.',
 	location: 'La Habra, CA, United States',
 	email: 'benclarkk1026@gmail.com',
 	whatsappNumber: '+1 (562) 603-4526',
@@ -99,8 +99,8 @@ export const personal = {
 	discordUserId: '',
 	linkedinUrl: 'https://www.linkedin.com/in/benclark1026',
 	greeting: "Hi, I'm",
-	heroLead: 'AI Automation Engineer | AI Agents | LLM Applications',
-	model: 'Available for remote AI automation and agent work',
+	heroLead: 'AI & Software Engineer | Agents | Backend Systems',
+	model: 'Available for remote AI and software engineering work',
 };
 
 export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
@@ -124,13 +124,13 @@ export const navLinks: NavLink[] = [
 export const highlights: Highlight[] = [
 	{ value: '6+', label: 'Years Experience' },
 	{ value: 'AI Agents', label: 'Focus' },
-	{ value: 'LLM', label: 'Applications' },
-	{ value: 'Production', label: 'Automation' },
+	{ value: 'Python', label: 'Backend' },
+	{ value: 'Production', label: 'Systems' },
 ];
 
 export const traits: string[] = [
-	'AI agent workflows',
-	'LLM applications',
+	'AI agent development',
+	'Software engineering',
 	'Workflow automation',
 	'RAG and tool calling',
 	'Human-in-the-loop controls',
@@ -157,7 +157,7 @@ export const expertise: ExpertiseItem[] = [
 		tags: ['Orchestration', 'n8n', 'APIs', 'Retries', 'Validation'],
 	},
 	{
-		title: 'Python Backend & APIs',
+		title: 'Software Engineering & APIs',
 		description:
 			'Python services, FastAPI, REST APIs, PostgreSQL, Redis, document processing, and data pipelines that connect AI outputs to downstream business systems.',
 		icon: FaPython,
@@ -168,7 +168,7 @@ export const expertise: ExpertiseItem[] = [
 	{
 		title: 'Systems & Integrations',
 		description:
-			'CRM and SaaS integrations, business-system wiring, exception handling, human-approval paths, and cloud deployment for dependable production automation.',
+			'CRM and SaaS integrations, business-system wiring, exception handling, human-approval paths, and cloud deployment for dependable production software.',
 		icon: FaLayerGroup,
 		iconColor: 'rgb(74, 222, 128)',
 		glowColor: 'rgba(74, 222, 128, 0.55)',
@@ -176,43 +176,32 @@ export const expertise: ExpertiseItem[] = [
 	},
 ];
 
-const projectPreview = (siteUrl: string) =>
-	`https://image.thum.io/get/width/1200/crop/675/noanimate/${siteUrl.replace(/\/$/, '')}`;
-
 export const projects: ProjectItem[] = [
 	{
-		title: 'WorkflowHQ',
+		title: 'AI Lead Qualification & Demo Scheduling',
 		description:
-			'AI agents for business workflows: phone, chat, email, and SMS that qualify leads, book meetings, update CRM, and keep pipelines moving without manual handoffs.',
-		stack: ['AI Agents', 'CRM', 'Voice', 'Chat', 'Automation'],
-		image: projectPreview('https://workflowhq.co'),
-		url: 'https://workflowhq.co/',
+			'AI automation for inbound sales: prospect research, business qualification, CRM retrieval, personalized outreach, routing, and meeting scheduling, with structured handoffs and human escalation for uncertain cases.',
+		stack: ['AI Agents', 'CRM', 'Qualification', 'Scheduling', 'HITL'],
 		featured: true,
 	},
 	{
-		title: 'Heym',
+		title: 'Enterprise Invoice Reconciliation',
 		description:
-			'Self-hosted AI-native workflow platform with a visual canvas, multi-agent orchestration, built-in RAG, MCP support, and human review checkpoints.',
-		stack: ['Agents', 'RAG', 'MCP', 'Workflows', 'Self-hosted'],
-		image: projectPreview('https://heym.run'),
-		url: 'https://heym.run/',
+			'AI agent workflow that extracts invoice data, retrieves matching financial records, compares amounts and line items, flags discrepancies, and routes exceptions for human review before acceptance.',
+		stack: ['Document AI', 'RAG', 'Validation', 'Finance', 'HITL'],
 		featured: true,
 	},
 	{
-		title: 'TinyFish',
+		title: 'Document Intelligence Pipelines',
 		description:
-			'Web infrastructure for AI agents: live search, clean page fetch, real browser automation, and production web agents that navigate authenticated sites.',
-		stack: ['Web Agents', 'Browser', 'Search API', 'Fetch', 'Automation'],
-		image: projectPreview('https://tinyfish.chat'),
-		url: 'https://tinyfish.chat/',
+			'Python services for document-intensive processes: extract structured fields, validate results, and push clean data into downstream business systems with production logging and retries.',
+		stack: ['Python', 'ML', 'APIs', 'PostgreSQL', 'Validation'],
 	},
 	{
-		title: 'Workbird',
+		title: 'Multi-step Agent Orchestration',
 		description:
-			'AI automation platform for building agent workflows with MCP servers, app integrations, browser automation, scheduling, and human approval steps.',
-		stack: ['AI Agents', 'MCP', 'Workflows', 'Browser', 'Integrations'],
-		image: projectPreview('https://workbird.io'),
-		url: 'https://workbird.io/',
+			'Production agent workflows for research, communication, scheduling, and ops execution, combining LLM reasoning with tools, APIs, state management, and controlled human-approval paths.',
+		stack: ['AI Agents', 'Tool Calling', 'APIs', 'Orchestration', 'MCP'],
 	},
 ];
 
@@ -221,7 +210,7 @@ export const expertiseSection = {
 		title: 'What I',
 		subtitle: 'Build',
 		summary:
-			'AI agents, LLM applications, and workflow automation that connect models to real business systems.',
+			'AI agents, backend software, and workflow automation that connect models to real business systems.',
 	},
 };
 
@@ -230,7 +219,7 @@ export const projectsSection = {
 		title: 'Selected',
 		subtitle: 'Work',
 		summary:
-			'Featured AI agent and workflow automation products across sales, ops, and web automation',
+			'Personal AI and software engineering projects across sales ops, finance, documents, and agent orchestration',
 	},
 };
 
@@ -239,9 +228,9 @@ export const contact = {
 		title: 'Get In',
 		subtitle: 'Touch',
 		summary:
-			'Open to AI automation, agent systems, and longer-term engineering engagements.',
+			'Open to AI engineering, software systems, and longer-term product collaborations.',
 	},
-	headline: 'Tell me what you are automating.',
+	headline: 'Tell me what you are building.',
 	subtext:
 		'Send a short note about your project. I usually reply within one business day.',
 };
@@ -340,11 +329,11 @@ export const about = {
 		title: 'About',
 		subtitle: 'Me',
 		summary:
-			'AI Automation Engineer in La Habra, CA, building production agent systems and workflow automation',
+			'AI & Software Engineer in La Habra, CA, building production agents, backends, and workflow systems',
 	},
 	intro: [
-		'I am Ben Clark, an AI Automation Engineer with 6 years of experience across software engineering, AI/ML, workflow automation, document intelligence, and AI agent development. I build production systems that connect LLM applications with APIs, business data, SaaS platforms, and operational workflows.',
-		'My background spans Python backends, REST APIs, RAG, tool calling, MCP, validation, exception handling, and human-in-the-loop controls. I focus on turning business requirements into dependable automation that can run multi-step processes with clear validation and controlled handoffs.',
+		'I am Ben Clark, an AI & Software Engineer with 6 years of experience in AI agent development, workflow orchestration, and production automation systems. I build software that connects LLMs, APIs, business data, and SaaS platforms into reliable operational workflows.',
+		'My work spans Python backends, REST APIs, RAG, tool-based agent execution, MCP, validation, exception handling, and human-in-the-loop controls. I turn business requirements into maintainable systems with clear validation and controlled handoffs.',
 	],
 };
 
@@ -353,7 +342,7 @@ export const experience = {
 		title: 'Career',
 		subtitle: 'Path',
 		summary:
-			'From document AI and workflow platforms to production AI agent systems',
+			'From document AI and backend platforms to production AI agents and software systems',
 	},
 	timeline: [
 		{
@@ -367,12 +356,12 @@ export const experience = {
 						'Designed AI-agent workflows for multi-step business processes involving research, communication, scheduling, and operational execution.',
 						'Built agent workflows combining LLM reasoning with business context, structured data, external APIs, and application integrations.',
 						'Implemented tool-based execution, workflow state management, validation, and controlled actions for production automation.',
-						'Developed human-approval and exception-handling paths for tasks needing business judgment or uncertain outputs.',
-						'Translated operational requirements into maintainable AI automation systems with clear escalation paths.',
+						'Developed human-approval and exception-handling paths for tasks needing business judgment or additional verification.',
+						'Partnered with product and engineering to translate operational requirements into reliable AI automation systems.',
 					],
 				},
 				{
-					role: 'Software Engineer / Automation Engineer',
+					role: 'Software Engineer → Automation Engineer',
 					org: 'n8n · Berlin, Germany',
 					period: '2022 to 2024',
 					bullets: [
@@ -380,11 +369,11 @@ export const experience = {
 						'Built reusable automation workflows for data synchronization, business processes, notifications, and application integrations.',
 						'Integrated AI capabilities into workflow-driven applications by combining structured business rules with model-generated decisions.',
 						'Improved workflow reliability through validation, error handling, logging, retries, and controlled execution.',
-						'Worked with API-driven systems to reduce repetitive manual processing and improve consistency.',
+						'Collaborated across engineering and product to deliver maintainable automation solutions.',
 					],
 				},
 				{
-					role: 'Software Engineer / AI/ML Engineer',
+					role: 'Software Engineer → AI/ML Engineer',
 					org: 'Affinda · Melbourne, Australia',
 					period: '2020 to 2022',
 					bullets: [
@@ -392,6 +381,7 @@ export const experience = {
 						'Built Python services for processing business documents, extracting structured information, and connecting results to downstream systems.',
 						'Implemented data-processing and validation workflows to improve consistency of automated document intelligence.',
 						'Worked with backend services, APIs, databases, and ML components to support production document automation.',
+						'Collaborated with engineering and product to translate business requirements into practical software and AI solutions.',
 					],
 				},
 			],
@@ -406,7 +396,7 @@ export const experience = {
 					bullets: [
 						'Completed BSc (Hons) Computer Science in Hong Kong.',
 						'International study and exchange experience in Australia during the degree.',
-						'Dean’s Honors List · CSUF Alumni Association Scholarship.',
+						'Dean’s Honors List · CSUF Alumni Association Scholarship · Engineering & Computer Science Scholarship.',
 					],
 				},
 			],
@@ -419,7 +409,7 @@ export const techStack = {
 		title: 'Tech',
 		subtitle: 'Stack',
 		summary:
-			'Tools I use to build production AI agents, APIs, and workflow automation',
+			'Tools I use to build AI agents, backend services, and production workflow systems',
 	},
 	groups: [
 		{
