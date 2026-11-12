@@ -93,9 +93,9 @@ export const personal = {
 		'I build production AI agents and software systems that connect LLMs, APIs, business data, and SaaS platforms into reliable operational workflows.',
 	location: 'La Habra, CA, United States',
 	email: 'benclarkk1026@gmail.com',
-	whatsappNumber: '+1 (562) 603-4526',
-	telegramUsername: 'benrose1026',
-	discordUsername: 'benclark10261',
+	whatsappNumber: '+1 (730) 210-3965',
+	telegramUsername: 'foru10261',
+	discordUsername: 'foru10261',
 	discordUserId: '',
 	linkedinUrl: 'https://www.linkedin.com/in/benclark1026',
 	greeting: "Hi, I'm",
@@ -107,7 +107,7 @@ export const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${
 	personal.email,
 )}&su=${encodeURIComponent('Ben Clark portfolio inquiry')}`;
 
-export const whatsappUrl = 'https://wa.me/15626034526';
+export const whatsappUrl = 'https://wa.me/17302103965';
 
 export const telegramUrl = `https://t.me/${personal.telegramUsername}`;
 
@@ -342,7 +342,7 @@ export const experience = {
 		title: 'Career',
 		subtitle: 'Path',
 		summary:
-			'From document AI and backend platforms to production AI agents and software systems',
+			'Personal path from document AI and backend platforms to production AI agents and software systems',
 	},
 	timeline: [
 		{

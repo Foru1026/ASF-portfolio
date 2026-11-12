@@ -23,13 +23,11 @@
 }
 
 html {
-	scrollbar-width: none;
 	scroll-behavior: smooth !important;
 	scroll-padding-top: 5.5rem;
 }
 
 * {
-	cursor: none !important;
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -39,9 +37,8 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	background-color: #000000;
+	background-color: #05070d;
 	color: var(--text);
-	cursor: none;
 }
 
 section {
@@ -86,14 +83,6 @@ hr:before {
 	font-size: 1.5em;
 	color: hsl(196, 100%, 56%);
 	text-align: center;
-}
-
-/*
-	* Native scrollbar hidden — page progress shown by scroll comet canvas
-*/
-
-::-webkit-scrollbar {
-	display: none;
 }
 
 .heading {
