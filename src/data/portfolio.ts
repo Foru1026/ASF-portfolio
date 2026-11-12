@@ -196,8 +196,8 @@ export const projects: ProjectItem[] = [
 	{
 		title: 'Orbi',
 		description:
-			'Product and build platform for shipping modern software workflows with a clean operator-facing experience.',
-		stack: ['Product', 'Full Stack', 'Automation'],
+			'Lights-out software factory: file a GitHub Issue and get a reviewed release without supervising every step.',
+		stack: ['AI Agents', 'GitHub', 'Automation', 'CI'],
 		image: projectPreview('https://orbi.build'),
 		url: 'https://orbi.build',
 		featured: true,
@@ -205,164 +205,52 @@ export const projects: ProjectItem[] = [
 	{
 		title: 'FineData',
 		description:
-			'AI data platform focused on structured retrieval, analysis, and operational data workflows.',
-		stack: ['AI', 'Data', 'RAG', 'APIs'],
+			'Web scraping API for AI agents — send a URL and schema, get clean structured JSON back.',
+		stack: ['API', 'Scraping', 'MCP', 'Data'],
 		image: projectPreview('https://finedata.ai'),
 		url: 'https://finedata.ai',
 		featured: true,
 	},
 	{
-		title: 'Metribee',
-		description:
-			'Metrics and product intelligence experience for tracking performance signals teams actually use.',
-		stack: ['Analytics', 'Product', 'Dashboards'],
-		image: projectPreview('https://metribee.com'),
-		url: 'https://metribee.com',
-		featured: true,
-	},
-	{
-		title: 'AGI Work',
-		description:
-			'AI workbench for agent-driven tasks, orchestration, and practical automation around real deliverables.',
-		stack: ['AI Agents', 'Orchestration', 'Tools'],
-		image: projectPreview('https://agiwork.dev'),
-		url: 'https://agiwork.dev',
-	},
-	{
 		title: 'Eloo',
 		description:
-			'AI product surface for conversational and workflow-driven experiences with a polished launch presence.',
-		stack: ['AI', 'Product', 'UX'],
+			'AI agents for busy people — a focused product surface for everyday agent workflows.',
+		stack: ['AI Agents', 'Product', 'UX'],
 		image: projectPreview('https://eloo.ai'),
 		url: 'https://eloo.ai',
-	},
-	{
-		title: 'LiveDemo',
-		description:
-			'Interactive demo platform for showcasing product flows live without heavy setup friction.',
-		stack: ['Demos', 'Product', 'Frontend'],
-		image: projectPreview('https://livedemo.ai'),
-		url: 'https://livedemo.ai',
+		featured: true,
 	},
 	{
 		title: 'Virtik',
 		description:
-			'AI-native product experience oriented around assistants, interfaces, and operational AI use cases.',
-		stack: ['AI', 'Assistants', 'Product'],
-		image: projectPreview('https://virtik.ai'),
-		url: 'https://virtik.ai',
-	},
-	{
-		title: 'Papayo',
-		description:
-			'AI application focused on practical assistant workflows and productized intelligence features.',
-		stack: ['AI', 'Apps', 'Automation'],
-		image: projectPreview('https://papayo.ai'),
-		url: 'https://papayo.ai',
+			'Operations platform that connects detection, response, and field teams around shared site models.',
+		stack: ['Ops', 'Digital Twin', 'Realtime'],
+		image: projectPreview('https://www.virtik.ai'),
+		url: 'https://www.virtik.ai',
 	},
 	{
 		title: 'Muvi',
 		description:
-			'Video product experience for creating and presenting motion content with a modern web stack.',
-		stack: ['Video', 'Media', 'Frontend'],
+			'Multi-model AI video and image studio — generate from text or photo across 20+ models in one place.',
+		stack: ['Video', 'AI', 'Creative'],
 		image: projectPreview('https://muvi.video'),
 		url: 'https://muvi.video',
 	},
 	{
-		title: 'Your AI Project',
-		description:
-			'Project and ideation space for AI builds, experiments, and launch-ready product concepts.',
-		stack: ['AI', 'Projects', 'Product'],
-		image: projectPreview('https://youraiproject.com'),
-		url: 'https://youraiproject.com',
-	},
-	{
-		title: 'Vibe Atlas',
-		description:
-			'Discovery-oriented product for mapping vibes, references, and creative direction into usable collections.',
-		stack: ['Discovery', 'UX', 'Product'],
-		image: projectPreview('https://getvibeatlas.com'),
-		url: 'https://getvibeatlas.com',
-	},
-	{
-		title: 'MoneyNose',
-		description:
-			'Finance-facing web product oriented around clarity, tracking, and decision-friendly interfaces.',
-		stack: ['Fintech', 'Product', 'UX'],
-		image: projectPreview('https://moneynose.com'),
-		url: 'https://moneynose.com',
-	},
-	{
 		title: 'Widgion',
 		description:
-			'Widget and embed-focused product for packaging interactive experiences into reusable surfaces.',
-		stack: ['Widgets', 'Embeds', 'Frontend'],
+			'AI chat, help center, and customer-support widgets you can embed into product sites.',
+		stack: ['Widgets', 'Support', 'Chat'],
 		image: projectPreview('https://widgion.com'),
 		url: 'https://widgion.com',
 	},
 	{
-		title: 'Rizzqo',
-		description:
-			'Consumer-facing AI product with a sharp brand presentation and conversion-focused web experience.',
-		stack: ['Consumer AI', 'Brand', 'Web'],
-		image: projectPreview('https://rizzqo.com'),
-		url: 'https://rizzqo.com',
-	},
-	{
-		title: 'BKK Staff',
-		description:
-			'Staffing and operations web product for coordinating people, roles, and service delivery.',
-		stack: ['Ops', 'Staffing', 'Web App'],
-		image: projectPreview('https://www.bkkstaff.com'),
-		url: 'https://www.bkkstaff.com',
-	},
-	{
-		title: 'Product Clank',
-		description:
-			'Product storytelling and launch surface for communicating what a build does and why it matters.',
-		stack: ['Product', 'Marketing', 'Web'],
-		image: projectPreview('https://www.productclank.com'),
-		url: 'https://www.productclank.com',
-	},
-	{
-		title: 'Sozai',
-		description:
-			'Creative materials and asset-oriented app experience with a clean, modern interface.',
-		stack: ['Creative', 'App', 'Frontend'],
-		image: projectPreview('https://sozai.app'),
-		url: 'https://sozai.app',
-	},
-	{
-		title: 'Ink Preview',
-		description:
-			'Preview tooling for visualizing designs and ink-ready layouts before production.',
-		stack: ['Design', 'Preview', 'Tools'],
-		image: projectPreview('https://inkpreview.co'),
-		url: 'https://inkpreview.co',
-	},
-	{
 		title: 'ClosedCast',
 		description:
-			'Casting and media workflow product with a focused, professional web presence.',
-		stack: ['Media', 'Workflow', 'Web'],
+			'Private video streaming and archive — organize recordings and watch on web or Roku.',
+		stack: ['Video', 'Privacy', 'Streaming'],
 		image: projectPreview('https://closedcast.com'),
 		url: 'https://closedcast.com',
-	},
-	{
-		title: 'Flint',
-		description:
-			'Product launch experience for a focused tool with clear positioning and a tight conversion path.',
-		stack: ['SaaS', 'Product', 'Launch'],
-		image: projectPreview('https://www.tryflint.com'),
-		url: 'https://www.tryflint.com',
-	},
-	{
-		title: 'ItsNum',
-		description:
-			'Number-centric utility product with a simple, practical interface for everyday use cases.',
-		stack: ['Utility', 'Product', 'Web'],
-		image: projectPreview('https://www.itsnum.com'),
-		url: 'https://www.itsnum.com',
 	},
 ];
 
@@ -380,7 +268,7 @@ export const projectsSection = {
 		title: 'Selected',
 		subtitle: 'Work',
 		summary:
-			'Live products and platforms I built or contributed to across AI, SaaS, media, and ops',
+			'Live product and platform work across AI agents, data, media, ops, and support'
 	},
 };
 
