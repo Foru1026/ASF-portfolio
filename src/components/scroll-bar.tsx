@@ -9,9 +9,9 @@ import {
 } from '../lib/scroll-comet-fx';
 import { updateScrollCometPointer, isNearScrollCometPointer } from '../lib/scroll-comet-pointer';
 
-const CANVAS_W = 78;
+const CANVAS_W = 64;
 const EDGE_PAD = 38;
-const HEAD_INSET = 28;
+const HEAD_INSET = 24;
 
 const smoothStep = (
 	current: number,
@@ -208,12 +208,15 @@ export const ScrollBar = () => {
 			);
 			const atEndpoint =
 				progressRef.current <= 0.012 || progressRef.current >= 0.988;
+			if (atEndpoint || velocityRef.current < 0.06) {
+				sparksRef.current.length = 0;
+			}
 
 			tickSparks(
 				sparksRef.current,
 				headX,
 				headY,
-				atEndpoint ? 0.02 : Math.max(0.03, velocityRef.current * endpointFade),
+				atEndpoint ? 0 : velocityRef.current * endpointFade,
 				scrollDirRef.current,
 			);
 			drawSparks(ctx, sparksRef.current);
