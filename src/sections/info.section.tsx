@@ -71,16 +71,18 @@ export const InfoSection = () => {
 				</Reveal>
 
 				<Reveal delay={460}>
-					<div className='hero-stats'>
-						{highlights.map((item) => (
-							<div
-								className='hero-stat'
-								key={item.label}
-							>
-								<span className='hero-stat-value'>{item.value}</span>
-								<span className='hero-stat-label'>{item.label}</span>
-							</div>
-						))}
+					<div className='hero-stats-shell'>
+						<div className='hero-stats'>
+							{highlights.map((item) => (
+								<div
+									className='hero-stat'
+									key={item.label}
+								>
+									<span className='hero-stat-value'>{item.value}</span>
+									<span className='hero-stat-label'>{item.label}</span>
+								</div>
+							))}
+						</div>
 					</div>
 				</Reveal>
 			</div>

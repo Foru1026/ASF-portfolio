@@ -324,14 +324,6 @@ export const ProjectsGallery = () => {
 							className='projects-gallery'
 							role='list'
 							aria-label='Selected work gallery'
-							onMouseEnter={() => {
-								pausedRef.current = true;
-							}}
-							onMouseLeave={() => {
-								if (!scrollbarDraggingRef.current) {
-									pausedRef.current = false;
-								}
-							}}
 						>
 							<div
 								ref={trackRef}
