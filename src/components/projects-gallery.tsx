@@ -1,6 +1,7 @@
 import {
 	useCallback,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 	type PointerEvent as ReactPointerEvent,
@@ -8,9 +9,8 @@ import {
 import { ProjectCardImage } from './project-card-image';
 import { projects, type ProjectItem } from '../data/portfolio';
 
-const SCROLL_SPEED = 0.55;
+const SCROLL_SPEED = 0.65;
 const MIN_THUMB_RATIO = 0.08;
-const END_PAUSE_MS = 900;
 
 type ProjectCardProps = {
 	project: ProjectItem;
@@ -85,7 +85,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 						rel='noopener noreferrer'
 						draggable={false}
 					>
-						Visit {project.title}
+						Visit site
 					</a>
 				) : null}
 			</div>
@@ -98,35 +98,34 @@ export const ProjectsGallery = () => {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const railRef = useRef<HTMLDivElement>(null);
 	const thumbRef = useRef<HTMLDivElement>(null);
-	const maxScrollRef = useRef(0);
+	const loopWidthRef = useRef(0);
 	const pausedRef = useRef(false);
 	const scrollbarDraggingRef = useRef(false);
-	const autoCycleRef = useRef(false);
 	const pointerOffsetInThumbRef = useRef(0);
-	const cycleTimerRef = useRef<number | null>(null);
 	const metricsRef = useRef<ScrollMetrics | null>(null);
+
+	const [showAll, setShowAll] = useState(false);
 	const [thumbHidden, setThumbHidden] = useState(false);
 
-	const getMaxScroll = useCallback(() => {
-		const scroll = scrollRef.current;
-		if (!scroll) return 0;
-		return Math.max(0, scroll.scrollWidth - scroll.clientWidth);
-	}, []);
+	const flowProjects = useMemo(
+		() => [...projects, ...projects],
+		[],
+	);
 
 	const getMetrics = useCallback((): ScrollMetrics | null => {
 		const scroll = scrollRef.current;
 		const rail = railRef.current;
-		const maxScroll = maxScrollRef.current;
-		if (!scroll || !rail || maxScroll <= 0) return null;
+		if (!scroll || !rail) return null;
+
+		const maxScroll = Math.max(0, scroll.scrollWidth - scroll.clientWidth);
+		if (maxScroll <= 0) return null;
 
 		const trackWidth = rail.getBoundingClientRect().width;
-		const scrollWidth = scroll.scrollWidth;
 		const thumbWidth = Math.max(
 			trackWidth * MIN_THUMB_RATIO,
-			trackWidth * (scroll.clientWidth / scrollWidth),
+			trackWidth * (scroll.clientWidth / scroll.scrollWidth),
 		);
 		const travel = Math.max(trackWidth - thumbWidth, 1);
-
 		const metrics = { maxScroll, trackWidth, thumbWidth, travel };
 		metricsRef.current = metrics;
 		return metrics;
@@ -147,54 +146,38 @@ export const ProjectsGallery = () => {
 			return;
 		}
 
-		const progress =
-			metrics.maxScroll > 0 ? scroll.scrollLeft / metrics.maxScroll : 0;
+		const loopWidth = loopWidthRef.current || metrics.maxScroll;
+		const progressBase = loopWidth > 0 ? scroll.scrollLeft % loopWidth : 0;
+		const progress = loopWidth > 0 ? progressBase / loopWidth : 0;
 		paintThumb(progress * metrics.travel, metrics.thumbWidth);
 	}, [getMetrics, paintThumb]);
 
 	const measureScroll = useCallback(() => {
-		maxScrollRef.current = getMaxScroll();
+		const track = trackRef.current;
+		if (track) {
+			loopWidthRef.current = track.scrollWidth / 2;
+		}
 		syncScrollbar();
-	}, [getMaxScroll, syncScrollbar]);
+	}, [syncScrollbar]);
 
 	const setScrollFromThumbLeft = useCallback(
 		(thumbLeftPx: number) => {
 			const scroll = scrollRef.current;
 			const metrics = getMetrics();
-			if (!scroll || !metrics) return;
+			const loopWidth = loopWidthRef.current;
+			if (!scroll || !metrics || loopWidth <= 0) return;
 
 			const clamped = Math.min(metrics.travel, Math.max(0, thumbLeftPx));
-			scroll.scrollLeft = (clamped / metrics.travel) * metrics.maxScroll;
+			const base = Math.floor(scroll.scrollLeft / loopWidth) * loopWidth;
+			scroll.scrollLeft = base + (clamped / metrics.travel) * loopWidth;
 			paintThumb(clamped, metrics.thumbWidth);
 		},
 		[getMetrics, paintThumb],
 	);
 
-	const clearCycleTimer = () => {
-		if (cycleTimerRef.current !== null) {
-			window.clearTimeout(cycleTimerRef.current);
-			cycleTimerRef.current = null;
-		}
-	};
-
-	const restartFromStart = useCallback(() => {
-		const scroll = scrollRef.current;
-		if (!scroll) return;
-
-		setThumbHidden(true);
-		autoCycleRef.current = true;
-
-		clearCycleTimer();
-		cycleTimerRef.current = window.setTimeout(() => {
-			scroll.scrollLeft = 0;
-			paintThumb(0, metricsRef.current?.thumbWidth ?? 0);
-			setThumbHidden(false);
-			autoCycleRef.current = false;
-			pausedRef.current = false;
-		}, END_PAUSE_MS);
-	}, [paintThumb]);
-
 	useEffect(() => {
+		if (showAll) return;
+
 		measureScroll();
 		const track = trackRef.current;
 		const observer =
@@ -204,31 +187,29 @@ export const ProjectsGallery = () => {
 		if (track) observer?.observe(track);
 
 		window.addEventListener('resize', measureScroll);
-		window.addEventListener('load', measureScroll);
-
-		const timers = [0, 300, 900].map((ms) =>
+		const timers = [0, 250, 800, 1600].map((ms) =>
 			window.setTimeout(measureScroll, ms),
 		);
 
 		return () => {
 			observer?.disconnect();
 			window.removeEventListener('resize', measureScroll);
-			window.removeEventListener('load', measureScroll);
 			timers.forEach((id) => window.clearTimeout(id));
-			clearCycleTimer();
 		};
-	}, [measureScroll]);
+	}, [measureScroll, showAll, flowProjects.length]);
 
 	useEffect(() => {
+		if (showAll) return;
 		const scroll = scrollRef.current;
 		if (!scroll) return;
 
 		const onScroll = () => syncScrollbar();
 		scroll.addEventListener('scroll', onScroll, { passive: true });
 		return () => scroll.removeEventListener('scroll', onScroll);
-	}, [syncScrollbar]);
+	}, [syncScrollbar, showAll]);
 
 	useEffect(() => {
+		if (showAll) return;
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 			return;
 		}
@@ -236,25 +217,19 @@ export const ProjectsGallery = () => {
 		let frame = 0;
 		const tick = () => {
 			const scroll = scrollRef.current;
-			const maxScroll = maxScrollRef.current;
+			const loopWidth = loopWidthRef.current;
 
 			if (
 				scroll &&
 				!pausedRef.current &&
 				!scrollbarDraggingRef.current &&
-				!autoCycleRef.current &&
-				maxScroll > 0
+				loopWidth > 0
 			) {
-				if (scroll.scrollLeft >= maxScroll - 1) {
-					pausedRef.current = true;
-					restartFromStart();
-				} else {
-					scroll.scrollLeft = Math.min(
-						maxScroll,
-						scroll.scrollLeft + SCROLL_SPEED,
-					);
-					syncScrollbar();
+				scroll.scrollLeft += SCROLL_SPEED;
+				if (scroll.scrollLeft >= loopWidth) {
+					scroll.scrollLeft -= loopWidth;
 				}
+				syncScrollbar();
 			}
 
 			frame = requestAnimationFrame(tick);
@@ -262,18 +237,16 @@ export const ProjectsGallery = () => {
 
 		frame = requestAnimationFrame(tick);
 		return () => cancelAnimationFrame(frame);
-	}, [restartFromStart, syncScrollbar]);
+	}, [syncScrollbar, showAll]);
 
 	const onRailPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-		if (event.button !== 0) return;
+		if (event.button !== 0 || showAll) return;
 		event.preventDefault();
 
 		const metrics = getMetrics();
 		const rail = railRef.current;
 		if (!metrics || !rail) return;
 
-		clearCycleTimer();
-		autoCycleRef.current = false;
 		setThumbHidden(false);
 		pausedRef.current = true;
 		scrollbarDraggingRef.current = true;
@@ -285,11 +258,10 @@ export const ProjectsGallery = () => {
 			'.projects-scroll-thumb',
 		);
 
+		const loopWidth = loopWidthRef.current || 1;
 		const currentThumbLeft =
-			metrics.maxScroll > 0
-				? (scrollRef.current!.scrollLeft / metrics.maxScroll) *
-					metrics.travel
-				: 0;
+			((scrollRef.current!.scrollLeft % loopWidth) / loopWidth) *
+			metrics.travel;
 
 		if (isThumb) {
 			pointerOffsetInThumbRef.current = pointerX - currentThumbLeft;
@@ -326,47 +298,91 @@ export const ProjectsGallery = () => {
 
 	return (
 		<div className='projects-gallery-wrap'>
-			<div className='projects-gallery-viewport'>
+			{showAll ? (
 				<div
-					ref={scrollRef}
-					className='projects-gallery'
+					className='projects-grid'
 					role='list'
-					aria-label='Selected work gallery'
+					aria-label='All selected work'
 				>
-					<div
-						ref={trackRef}
-						className='projects-gallery-track'
-					>
-						{projects.map((project, idx) => (
+					{projects.map((project, idx) => (
+						<div
+							key={project.title}
+							className='projects-grid-item'
+						>
+							<ProjectCard
+								project={project}
+								index={idx}
+							/>
+						</div>
+					))}
+				</div>
+			) : (
+				<>
+					<div className='projects-gallery-viewport'>
+						<div
+							ref={scrollRef}
+							className='projects-gallery'
+							role='list'
+							aria-label='Selected work gallery'
+							onMouseEnter={() => {
+								pausedRef.current = true;
+							}}
+							onMouseLeave={() => {
+								if (!scrollbarDraggingRef.current) {
+									pausedRef.current = false;
+								}
+							}}
+						>
 							<div
-								key={project.title}
-								className='projects-gallery-item'
+								ref={trackRef}
+								className='projects-gallery-track'
 							>
-								<ProjectCard
-									project={project}
-									index={idx}
-								/>
+								{flowProjects.map((project, idx) => (
+									<div
+										key={`${project.title}-${idx}`}
+										className='projects-gallery-item'
+									>
+										<ProjectCard
+											project={project}
+											index={idx % projects.length}
+										/>
+									</div>
+								))}
 							</div>
-						))}
+						</div>
 					</div>
-				</div>
-			</div>
 
-			<div className='projects-scroll-rail'>
-				<div
-					ref={railRef}
-					className='projects-scroll-track'
-					role='scrollbar'
-					aria-label='Gallery scroll position'
-					aria-valuemin={0}
-					aria-valuemax={100}
-					onPointerDown={onRailPointerDown}
+					<div className='projects-scroll-rail'>
+						<div
+							ref={railRef}
+							className='projects-scroll-track'
+							role='scrollbar'
+							aria-label='Gallery scroll position'
+							aria-valuemin={0}
+							aria-valuemax={100}
+							onPointerDown={onRailPointerDown}
+						>
+							<div
+								ref={thumbRef}
+								className={`projects-scroll-thumb ${thumbHidden ? 'projects-scroll-thumb-hidden' : ''}`}
+							/>
+						</div>
+					</div>
+				</>
+			)}
+
+			<div className='projects-actions'>
+				<button
+					type='button'
+					className='comet-btn comet-btn-contact projects-show-all'
+					onClick={() => {
+						setShowAll((open) => !open);
+						pausedRef.current = false;
+						setThumbHidden(false);
+					}}
 				>
-					<div
-						ref={thumbRef}
-						className={`projects-scroll-thumb ${thumbHidden ? 'projects-scroll-thumb-hidden' : ''}`}
-					/>
-				</div>
+					{showAll ? 'Show less' : 'Show all'}
+				</button>
 			</div>
 		</div>
 	);

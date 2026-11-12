@@ -180,32 +180,189 @@ export const expertise: ExpertiseItem[] = [
 	},
 ];
 
+const projectPreview = (siteUrl: string) =>
+	`https://image.thum.io/get/width/1200/crop/675/noanimate/${siteUrl.replace(/\/$/, '')}`;
+
 export const projects: ProjectItem[] = [
 	{
-		title: 'AI-Ready Product Flows',
+		title: 'Shiba',
 		description:
-			'Designed application flows for LLM-backed assistants, document retrieval, and structured output processing, with permissions, fallback behavior, and clear user experience.',
-		stack: ['LLM', 'RAG', 'React', 'APIs', 'UX'],
+			'AI employees for engineering, marketing, research, and ops — brief in Slack, review the plan, and approve every action before it runs.',
+		stack: ['AI Agents', 'HITL', 'Self-hosted', 'Workflows'],
+		image: projectPreview('https://tryshiba.dev'),
+		url: 'https://tryshiba.dev',
 		featured: true,
 	},
 	{
-		title: 'Full-Stack Performance Platform',
+		title: 'Orbi',
 		description:
-			'Built reusable frontend components across 15+ production features and optimized rendering, APIs, and database access, contributing to about 35% performance improvement.',
-		stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Perf'],
+			'Product and build platform for shipping modern software workflows with a clean operator-facing experience.',
+		stack: ['Product', 'Full Stack', 'Automation'],
+		image: projectPreview('https://orbi.build'),
+		url: 'https://orbi.build',
 		featured: true,
 	},
 	{
-		title: 'Multi-step Agent Orchestration',
+		title: 'FineData',
 		description:
-			'Production agent workflows for research, communication, scheduling, and ops execution, combining LLM reasoning with tools, APIs, state management, and human-approval paths.',
-		stack: ['AI Agents', 'Tool Calling', 'APIs', 'Orchestration', 'HITL'],
+			'AI data platform focused on structured retrieval, analysis, and operational data workflows.',
+		stack: ['AI', 'Data', 'RAG', 'APIs'],
+		image: projectPreview('https://finedata.ai'),
+		url: 'https://finedata.ai',
+		featured: true,
 	},
 	{
-		title: 'Document Intelligence Pipelines',
+		title: 'Metribee',
 		description:
-			'Python services for document-intensive processes: extract structured fields, validate results, and connect clean data to downstream business systems.',
-		stack: ['Python', 'ML', 'APIs', 'PostgreSQL', 'Validation'],
+			'Metrics and product intelligence experience for tracking performance signals teams actually use.',
+		stack: ['Analytics', 'Product', 'Dashboards'],
+		image: projectPreview('https://metribee.com'),
+		url: 'https://metribee.com',
+		featured: true,
+	},
+	{
+		title: 'AGI Work',
+		description:
+			'AI workbench for agent-driven tasks, orchestration, and practical automation around real deliverables.',
+		stack: ['AI Agents', 'Orchestration', 'Tools'],
+		image: projectPreview('https://agiwork.dev'),
+		url: 'https://agiwork.dev',
+	},
+	{
+		title: 'Eloo',
+		description:
+			'AI product surface for conversational and workflow-driven experiences with a polished launch presence.',
+		stack: ['AI', 'Product', 'UX'],
+		image: projectPreview('https://eloo.ai'),
+		url: 'https://eloo.ai',
+	},
+	{
+		title: 'LiveDemo',
+		description:
+			'Interactive demo platform for showcasing product flows live without heavy setup friction.',
+		stack: ['Demos', 'Product', 'Frontend'],
+		image: projectPreview('https://livedemo.ai'),
+		url: 'https://livedemo.ai',
+	},
+	{
+		title: 'Virtik',
+		description:
+			'AI-native product experience oriented around assistants, interfaces, and operational AI use cases.',
+		stack: ['AI', 'Assistants', 'Product'],
+		image: projectPreview('https://virtik.ai'),
+		url: 'https://virtik.ai',
+	},
+	{
+		title: 'Papayo',
+		description:
+			'AI application focused on practical assistant workflows and productized intelligence features.',
+		stack: ['AI', 'Apps', 'Automation'],
+		image: projectPreview('https://papayo.ai'),
+		url: 'https://papayo.ai',
+	},
+	{
+		title: 'Muvi',
+		description:
+			'Video product experience for creating and presenting motion content with a modern web stack.',
+		stack: ['Video', 'Media', 'Frontend'],
+		image: projectPreview('https://muvi.video'),
+		url: 'https://muvi.video',
+	},
+	{
+		title: 'Your AI Project',
+		description:
+			'Project and ideation space for AI builds, experiments, and launch-ready product concepts.',
+		stack: ['AI', 'Projects', 'Product'],
+		image: projectPreview('https://youraiproject.com'),
+		url: 'https://youraiproject.com',
+	},
+	{
+		title: 'Vibe Atlas',
+		description:
+			'Discovery-oriented product for mapping vibes, references, and creative direction into usable collections.',
+		stack: ['Discovery', 'UX', 'Product'],
+		image: projectPreview('https://getvibeatlas.com'),
+		url: 'https://getvibeatlas.com',
+	},
+	{
+		title: 'MoneyNose',
+		description:
+			'Finance-facing web product oriented around clarity, tracking, and decision-friendly interfaces.',
+		stack: ['Fintech', 'Product', 'UX'],
+		image: projectPreview('https://moneynose.com'),
+		url: 'https://moneynose.com',
+	},
+	{
+		title: 'Widgion',
+		description:
+			'Widget and embed-focused product for packaging interactive experiences into reusable surfaces.',
+		stack: ['Widgets', 'Embeds', 'Frontend'],
+		image: projectPreview('https://widgion.com'),
+		url: 'https://widgion.com',
+	},
+	{
+		title: 'Rizzqo',
+		description:
+			'Consumer-facing AI product with a sharp brand presentation and conversion-focused web experience.',
+		stack: ['Consumer AI', 'Brand', 'Web'],
+		image: projectPreview('https://rizzqo.com'),
+		url: 'https://rizzqo.com',
+	},
+	{
+		title: 'BKK Staff',
+		description:
+			'Staffing and operations web product for coordinating people, roles, and service delivery.',
+		stack: ['Ops', 'Staffing', 'Web App'],
+		image: projectPreview('https://www.bkkstaff.com'),
+		url: 'https://www.bkkstaff.com',
+	},
+	{
+		title: 'Product Clank',
+		description:
+			'Product storytelling and launch surface for communicating what a build does and why it matters.',
+		stack: ['Product', 'Marketing', 'Web'],
+		image: projectPreview('https://www.productclank.com'),
+		url: 'https://www.productclank.com',
+	},
+	{
+		title: 'Sozai',
+		description:
+			'Creative materials and asset-oriented app experience with a clean, modern interface.',
+		stack: ['Creative', 'App', 'Frontend'],
+		image: projectPreview('https://sozai.app'),
+		url: 'https://sozai.app',
+	},
+	{
+		title: 'Ink Preview',
+		description:
+			'Preview tooling for visualizing designs and ink-ready layouts before production.',
+		stack: ['Design', 'Preview', 'Tools'],
+		image: projectPreview('https://inkpreview.co'),
+		url: 'https://inkpreview.co',
+	},
+	{
+		title: 'ClosedCast',
+		description:
+			'Casting and media workflow product with a focused, professional web presence.',
+		stack: ['Media', 'Workflow', 'Web'],
+		image: projectPreview('https://closedcast.com'),
+		url: 'https://closedcast.com',
+	},
+	{
+		title: 'Flint',
+		description:
+			'Product launch experience for a focused tool with clear positioning and a tight conversion path.',
+		stack: ['SaaS', 'Product', 'Launch'],
+		image: projectPreview('https://www.tryflint.com'),
+		url: 'https://www.tryflint.com',
+	},
+	{
+		title: 'ItsNum',
+		description:
+			'Number-centric utility product with a simple, practical interface for everyday use cases.',
+		stack: ['Utility', 'Product', 'Web'],
+		image: projectPreview('https://www.itsnum.com'),
+		url: 'https://www.itsnum.com',
 	},
 ];
 
@@ -223,7 +380,7 @@ export const projectsSection = {
 		title: 'Selected',
 		subtitle: 'Work',
 		summary:
-			'Selected AI and full-stack work across assistants, performance, agent orchestration, and document intelligence',
+			'Live products and platforms I built or contributed to across AI, SaaS, media, and ops',
 	},
 };
 

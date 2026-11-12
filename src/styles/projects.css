@@ -57,10 +57,10 @@
 }
 
 .projects-gallery {
-	overflow-x: hidden;
+	overflow-x: auto;
 	overflow-y: hidden;
 	width: 100%;
-	touch-action: pan-y;
+	touch-action: pan-x;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	padding: 0 0 0.75rem;
@@ -253,6 +253,28 @@
 	color: rgb(160, 220, 255);
 }
 
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.35rem;
+	width: 100%;
+	padding: 0.25rem 0.5rem 0.5rem;
+}
+
+.projects-grid-item {
+	min-width: 0;
+}
+
+.projects-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.15rem;
+}
+
+.projects-show-all {
+	min-width: 9.5rem;
+}
+
 .projects-scroll-rail {
 	width: min(88%, 48rem);
 	margin: 0.75rem auto 0;
@@ -352,6 +374,12 @@
 	opacity: 0;
 }
 
+@media screen and (max-width: 1100px) {
+	.projects-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
 @media screen and (max-width: 900px) {
 	.projects {
 		padding: 1.5rem 1.5rem 2rem;
@@ -368,6 +396,12 @@
 
 	.projects-scroll-rail {
 		width: min(88%, 100%);
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.projects-grid {
+		grid-template-columns: 1fr;
 	}
 }
 

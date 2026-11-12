@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const FALLBACK_IMAGE = '/projects/project-ecommerce.svg';
 
@@ -9,6 +9,10 @@ type ProjectCardImageProps = {
 
 export const ProjectCardImage = ({ src, alt }: ProjectCardImageProps) => {
 	const [imageSrc, setImageSrc] = useState(src);
+
+	useEffect(() => {
+		setImageSrc(src);
+	}, [src]);
 
 	return (
 		<img
