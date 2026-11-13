@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HexBg } from './components/hex-bg';
 import { MouseTrail } from './components/mouse-trail';
-import { Navbar } from './components/navbar';
 import { ScrollBar } from './components/scroll-bar';
 import { SiteFooter } from './components/site-footer';
 import { FallingStarsLayer, StarfieldBg } from './components/starfield-bg';
@@ -19,7 +18,6 @@ import './styles/hero-name-3d.css';
 import './styles/info-section.css';
 import './styles/layered-title.css';
 import './styles/mouse-trail.css';
-import './styles/navbar.css';
 import './styles/page-shell.css';
 import './styles/projects.css';
 import './styles/reveal.css';
@@ -36,7 +34,6 @@ const SiteShell = () => (
 		<HexBg />
 		<ScrollBar />
 		<MouseTrail />
-		<Navbar />
 		<HomePage />
 		<SiteFooter />
 		<FallingStarsLayer />

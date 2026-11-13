@@ -12,7 +12,7 @@
 .experience-title {
 	top: 4.5rem;
 	align-self: flex-start;
-	min-height: calc(100vh - 5.5rem);
+	min-height: 100vh;
 }
 
 .experience-title .layered-title-summary {

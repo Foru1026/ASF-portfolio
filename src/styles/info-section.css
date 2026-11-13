@@ -63,6 +63,12 @@
 	overflow: visible;
 }
 
+.hero-logo-slot {
+	width: min(100%, 42rem);
+	min-height: clamp(10rem, 28vh, 18rem);
+	margin-bottom: 1.25rem;
+}
+
 .hero-greeting {
 	color: white;
 	font-size: clamp(1.05rem, 2vw, 1.35rem);
