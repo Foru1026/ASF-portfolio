@@ -1,3 +1,4 @@
+import { HeroChip3D } from '../components/hero-chip-3d';
 import { Reveal } from '../components/reveal';
 import { highlights, personal } from '../data/portfolio';
 
@@ -14,14 +15,17 @@ export const InfoSection = () => {
 			</div>
 
 			<div className='hero-content'>
-				{/* Drop your 3D logo here */}
-				<div className='hero-logo-slot' aria-hidden='true' />
+				<Reveal delay={40}>
+					<div className='hero-logo-slot'>
+						<HeroChip3D />
+					</div>
+				</Reveal>
 
-				<Reveal delay={120}>
+				<Reveal delay={160}>
 					<p className='hero-tagline'>{personal.tagline}</p>
 				</Reveal>
 
-				<Reveal delay={200}>
+				<Reveal delay={240}>
 					<div className='hero-actions'>
 						<a
 							href='#about-me'
@@ -38,7 +42,7 @@ export const InfoSection = () => {
 					</div>
 				</Reveal>
 
-				<Reveal delay={300}>
+				<Reveal delay={340}>
 					<div className='hero-stats-shell'>
 						<div className='hero-stats'>
 							{highlights.map((item) => (
