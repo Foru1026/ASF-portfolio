@@ -9,8 +9,8 @@ import {
 import { ProjectCardImage } from './project-card-image';
 import { projects, type ProjectItem } from '../data/portfolio';
 
-const SCROLL_SPEED = 0.38;
-const MIN_THUMB_RATIO = 0.16;
+const SCROLL_SPEED = 0.55;
+const MIN_THUMB_RATIO = 0.18;
 
 type ProjectCardProps = {
 	project: ProjectItem;
@@ -124,7 +124,7 @@ export const ProjectsGallery = () => {
 		const trackWidth = rail.getBoundingClientRect().width;
 		const thumbWidth = Math.max(
 			trackWidth * MIN_THUMB_RATIO,
-			trackWidth * (scroll.clientWidth / scroll.scrollWidth),
+			trackWidth * (scroll.clientWidth / Math.max(scroll.scrollWidth, 1)),
 		);
 		const travel = Math.max(trackWidth - thumbWidth, 1);
 		const metrics = { maxScroll, trackWidth, thumbWidth, travel };
@@ -154,8 +154,11 @@ export const ProjectsGallery = () => {
 	}, [getMetrics, paintThumb]);
 
 	const measureScroll = useCallback(() => {
+		const scroll = scrollRef.current;
 		const track = trackRef.current;
-		if (track) {
+		if (scroll && scroll.scrollWidth > 0) {
+			loopWidthRef.current = scroll.scrollWidth / 2;
+		} else if (track) {
 			loopWidthRef.current = track.scrollWidth / 2;
 		}
 		syncScrollbar();
@@ -181,7 +184,7 @@ export const ProjectsGallery = () => {
 			gridTopRef.current ?? document.getElementById('projects');
 		if (!anchor) return;
 		const top =
-			anchor.getBoundingClientRect().top + window.scrollY - 88;
+			anchor.getBoundingClientRect().top + window.scrollY - 24;
 		window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
 	}, []);
 
@@ -196,6 +199,7 @@ export const ProjectsGallery = () => {
 			return next;
 		});
 		pausedRef.current = false;
+		scrollbarDraggingRef.current = false;
 		setThumbHidden(false);
 	};
 
@@ -208,21 +212,37 @@ export const ProjectsGallery = () => {
 		if (showAll) return;
 
 		measureScroll();
+		const scroll = scrollRef.current;
 		const track = trackRef.current;
 		const observer =
-			track && typeof ResizeObserver !== 'undefined'
+			typeof ResizeObserver !== 'undefined'
 				? new ResizeObserver(measureScroll)
 				: null;
 		if (track) observer?.observe(track);
+		if (scroll) observer?.observe(scroll);
 
 		window.addEventListener('resize', measureScroll);
-		const timers = [0, 250, 800, 1600].map((ms) =>
+
+		const onImages = () => measureScroll();
+		const images = track?.querySelectorAll('img') ?? [];
+		images.forEach((img) => {
+			if (!img.complete) {
+				img.addEventListener('load', onImages);
+				img.addEventListener('error', onImages);
+			}
+		});
+
+		const timers = [0, 120, 400, 900, 1800, 3200].map((ms) =>
 			window.setTimeout(measureScroll, ms),
 		);
 
 		return () => {
 			observer?.disconnect();
 			window.removeEventListener('resize', measureScroll);
+			images.forEach((img) => {
+				img.removeEventListener('load', onImages);
+				img.removeEventListener('error', onImages);
+			});
 			timers.forEach((id) => window.clearTimeout(id));
 		};
 	}, [measureScroll, showAll, flowProjects.length]);
@@ -243,10 +263,18 @@ export const ProjectsGallery = () => {
 			return;
 		}
 
+		pausedRef.current = false;
+		scrollbarDraggingRef.current = false;
+
 		let frame = 0;
 		const tick = () => {
 			const scroll = scrollRef.current;
-			const loopWidth = loopWidthRef.current;
+			let loopWidth = loopWidthRef.current;
+
+			if (scroll && loopWidth <= 0 && scroll.scrollWidth > scroll.clientWidth) {
+				loopWidth = scroll.scrollWidth / 2;
+				loopWidthRef.current = loopWidth;
+			}
 
 			if (
 				scroll &&

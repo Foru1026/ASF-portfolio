@@ -1,4 +1,4 @@
-import { HeroChip3D } from '../components/hero-chip-3d';
+import { HeroLogo3D } from '../components/hero-logo-3d';
 import { Reveal } from '../components/reveal';
 import { highlights, personal } from '../data/portfolio';
 
@@ -17,15 +17,39 @@ export const InfoSection = () => {
 			<div className='hero-content'>
 				<Reveal delay={40}>
 					<div className='hero-logo-slot'>
-						<HeroChip3D />
+						<HeroLogo3D />
 					</div>
 				</Reveal>
 
-				<Reveal delay={160}>
-					<p className='hero-tagline'>{personal.tagline}</p>
+				<Reveal delay={120}>
+					<div className='hero-brand-meta'>
+						<p className='hero-badge'>{personal.heroBadge}</p>
+						<p className='hero-services'>
+							{personal.heroServices.map((service, index) => (
+								<span key={service}>
+									<span
+										className={`hero-service hero-service--${index % 2 === 0 ? 'cyan' : 'purple'}`}
+									>
+										{service}
+									</span>
+									{index < personal.heroServices.length - 1 ? (
+										<span className='hero-service-sep'>, </span>
+									) : null}
+								</span>
+							))}
+						</p>
+					</div>
+				</Reveal>
+
+				<Reveal delay={180}>
+					<p className='hero-lead'>{personal.heroLead}</p>
 				</Reveal>
 
 				<Reveal delay={240}>
+					<p className='hero-tagline'>{personal.tagline}</p>
+				</Reveal>
+
+				<Reveal delay={300}>
 					<div className='hero-actions'>
 						<a
 							href='#about-me'
@@ -42,7 +66,7 @@ export const InfoSection = () => {
 					</div>
 				</Reveal>
 
-				<Reveal delay={340}>
+				<Reveal delay={400}>
 					<div className='hero-stats-shell'>
 						<div className='hero-stats'>
 							{highlights.map((item) => (

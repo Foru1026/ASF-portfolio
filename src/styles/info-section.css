@@ -64,21 +64,21 @@
 }
 
 .hero-logo-slot {
-	width: min(100%, 42rem);
-	min-height: clamp(12rem, 32vh, 20rem);
-	margin-bottom: 0.85rem;
+	width: min(100%, 34rem);
+	min-height: clamp(11rem, 28vh, 17rem);
+	margin-bottom: 0.35rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.hero-chip-3d {
-	width: min(100%, 34rem);
-	height: clamp(12rem, 32vh, 20rem);
+.hero-logo-3d {
+	width: min(100%, 28rem);
+	height: clamp(11rem, 28vh, 17rem);
 	touch-action: none;
 }
 
-.hero-chip-3d canvas {
+.hero-logo-3d canvas {
 	width: 100% !important;
 	height: 100% !important;
 	display: block;

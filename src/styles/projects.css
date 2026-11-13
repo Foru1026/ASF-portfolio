@@ -284,14 +284,14 @@
 }
 
 .projects-scroll-rail {
-	width: min(94%, 60rem);
-	margin: 1.35rem auto 0.15rem;
-	padding: 1.35rem 0;
+	width: min(90%, 52rem);
+	margin: 1.15rem auto 0.1rem;
+	padding: 0.95rem 0;
 }
 
 .projects-scroll-track {
 	position: relative;
-	height: 1.5px;
+	height: 8px;
 	border-radius: 999px;
 	touch-action: none;
 	user-select: none;
@@ -299,27 +299,41 @@
 	background: linear-gradient(
 		90deg,
 		transparent 0%,
-		rgba(140, 160, 180, 0.14) 8%,
-		rgba(140, 160, 180, 0.22) 50%,
-		rgba(140, 160, 180, 0.14) 92%,
+		rgba(8, 12, 20, 0.55) 8%,
+		rgba(8, 12, 20, 0.85) 50%,
+		rgba(8, 12, 20, 0.55) 92%,
 		transparent 100%
 	);
 	border: none;
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		#000 10%,
+		#000 90%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		#000 10%,
+		#000 90%,
+		transparent 100%
+	);
 }
 
 .projects-scroll-track::before {
 	content: '';
 	position: absolute;
-	inset: -18px 0;
+	inset: -16px 0;
 	z-index: 0;
 }
 
-/* Career-path style fill + status orb */
+/* Soft comet flowing bar — dissolves at both ends */
 .projects-scroll-thumb {
 	position: absolute;
 	top: 50%;
 	left: 0;
-	height: 1.5px;
+	height: 8px;
 	min-width: 7.5rem;
 	border-radius: 999px;
 	pointer-events: auto;
@@ -327,85 +341,89 @@
 	will-change: transform, width, opacity;
 	background: linear-gradient(
 		90deg,
-		rgba(245, 250, 255, 0.92) 0%,
-		rgba(190, 220, 240, 0.78) 22%,
-		rgba(140, 178, 210, 0.55) 58%,
-		rgba(100, 140, 175, 0.18) 88%,
+		transparent 0%,
+		rgba(31, 195, 255, 0.12) 8%,
+		rgba(31, 195, 255, 0.55) 22%,
+		rgba(235, 248, 255, 0.95) 50%,
+		rgba(31, 195, 255, 0.55) 78%,
+		rgba(31, 195, 255, 0.12) 92%,
 		transparent 100%
 	);
-	box-shadow: 0 0 10px rgba(170, 200, 230, 0.18);
-	transition: opacity 0.4s ease;
+	box-shadow:
+		0 0 8px rgba(31, 195, 255, 0.4),
+		0 0 18px rgba(31, 195, 255, 0.18);
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		#000 14%,
+		#000 86%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		#000 14%,
+		#000 86%,
+		transparent 100%
+	);
+	transition: opacity 0.35s ease, filter 0.2s ease;
 }
 
 .projects-scroll-thumb::before {
 	content: '';
 	position: absolute;
-	left: 0;
-	top: 50%;
-	width: 11px;
-	height: 11px;
-	transform: translate(-35%, -50%);
-	border-radius: 50%;
-	border: 1.5px solid rgba(200, 224, 240, 0.7);
-	background: radial-gradient(
-		circle at 35% 28%,
-		rgba(255, 255, 255, 0.98) 0%,
-		rgba(210, 230, 245, 0.92) 38%,
-		rgba(140, 178, 210, 0.88) 72%,
-		rgba(95, 135, 170, 0.8) 100%
+	inset: -5px 10%;
+	border-radius: inherit;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(31, 195, 255, 0.18) 28%,
+		rgba(180, 230, 255, 0.28) 50%,
+		rgba(31, 195, 255, 0.18) 72%,
+		transparent 100%
 	);
-	box-shadow:
-		0 0 0 3px rgba(4, 12, 22, 0.92),
-		0 0 12px rgba(190, 220, 240, 0.35),
-		0 0 22px rgba(140, 180, 215, 0.18);
+	filter: blur(6px);
 	pointer-events: none;
-	z-index: 2;
+	z-index: -1;
+	animation: projects-flow-glow 3.8s ease-in-out infinite;
 }
 
 .projects-scroll-thumb::after {
 	content: '';
 	position: absolute;
-	left: -4px;
+	left: 28%;
+	right: 28%;
 	top: 50%;
-	width: 26px;
-	height: 26px;
-	transform: translate(-20%, -50%);
-	border-radius: 50%;
-	background: radial-gradient(
-		circle,
-		rgba(190, 220, 240, 0.18) 0%,
-		rgba(140, 180, 215, 0.07) 42%,
-		transparent 72%
+	height: 2px;
+	transform: translateY(-50%);
+	border-radius: inherit;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.55) 35%,
+		rgba(255, 255, 255, 0.75) 50%,
+		rgba(255, 255, 255, 0.55) 65%,
+		transparent 100%
 	);
-	animation: projects-status-breathe 3.4s ease-in-out infinite;
 	pointer-events: none;
-	z-index: 1;
 }
 
 .projects-scroll-thumb:active {
 	cursor: grabbing;
-}
-
-.projects-scroll-thumb:active::before {
-	box-shadow:
-		0 0 0 3px rgba(4, 12, 22, 0.92),
-		0 0 14px rgba(200, 230, 250, 0.45),
-		0 0 26px rgba(150, 195, 225, 0.22);
+	filter: brightness(1.08);
 }
 
 .projects-scroll-thumb-hidden {
 	opacity: 0;
 }
 
-@keyframes projects-status-breathe {
+@keyframes projects-flow-glow {
 	0%,
 	100% {
-		opacity: 0.55;
-		transform: translate(-20%, -50%) scale(0.92);
+		opacity: 0.65;
 	}
 	50% {
 		opacity: 1;
-		transform: translate(-20%, -50%) scale(1.1);
 	}
 }
 
@@ -445,7 +463,7 @@
 		transition: none;
 	}
 
-	.projects-scroll-thumb::after {
+	.projects-scroll-thumb::before {
 		animation: none;
 	}
 }

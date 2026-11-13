@@ -24,10 +24,13 @@ declare module 'three' {
 	export class Object3D {
 		position: Vector3;
 		rotation: { x: number; y: number; z: number };
+		scale: Vector3;
 		add(object: Object3D): this;
 		traverse(callback: (object: Object3D) => void): void;
 	}
-	export class Scene extends Object3D {}
+	export class Scene extends Object3D {
+		environment: Texture | null;
+	}
 	export class Group extends Object3D {}
 	export class Camera extends Object3D {
 		aspect: number;
@@ -67,9 +70,13 @@ declare module 'three' {
 	export class MeshStandardMaterial extends Material {
 		constructor(parameters?: Record<string, unknown>);
 	}
+	export class MeshPhysicalMaterial extends MeshStandardMaterial {
+		constructor(parameters?: Record<string, unknown>);
+	}
 	export class Texture {
 		colorSpace: string;
 		anisotropy: number;
+		mapping: number;
 		dispose(): void;
 	}
 	export class CanvasTexture extends Texture {
@@ -83,6 +90,13 @@ declare module 'three' {
 	}
 	export class BoxGeometry extends BufferGeometry {
 		constructor(width?: number, height?: number, depth?: number);
+	}
+	export class SphereGeometry extends BufferGeometry {
+		constructor(
+			radius?: number,
+			widthSegments?: number,
+			heightSegments?: number,
+		);
 	}
 	export class CylinderGeometry extends BufferGeometry {
 		constructor(
@@ -99,6 +113,14 @@ declare module 'three' {
 		moveTo(x: number, y: number): this;
 		lineTo(x: number, y: number): this;
 		quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): this;
+		bezierCurveTo(
+			cp1x: number,
+			cp1y: number,
+			cp2x: number,
+			cp2y: number,
+			x: number,
+			y: number,
+		): this;
 	}
 	export class Mesh extends Object3D {
 		constructor(geometry?: BufferGeometry, material?: Material | Material[]);
@@ -124,4 +146,6 @@ declare module 'three' {
 	}
 	export const SRGBColorSpace: string;
 	export const ACESFilmicToneMapping: number;
+	export const EquirectangularReflectionMapping: number;
+	export const DoubleSide: number;
 }
